@@ -1,35 +1,26 @@
 # Gustavo Pinto Portfolio
 
-Personal portfolio built with React, TypeScript, and Vite to present professional profile, skills, projects, and experience in a clean and visually strong format. The interface uses a dark theme with blue and green accents, a professional summary card, skills section, featured projects, and a timeline for experience.
-
-## Overview
-
-This project was designed as a single-page presentation with anchor navigation and content centralized in one data file. The goal is to keep it easy to maintain while remaining ready for quick content updates.
+Personal portfolio built with React, TypeScript, Vite, and Tailwind CSS. Dark mode design with a clean layout, componentized architecture, and an interactive skills section.
 
 ## Tech Stack
 
-- React
+- React 19
 - TypeScript
-- Vite
-- CSS3
-- HTML5
+- Vite 7
+- Tailwind CSS 4
 - lucide-react
+- clsx
 
 ## Features
 
-- Main hero section with a clear presentation and calls to action.
-- Professional summary card with contact information and availability status.
-- Skills section with custom icons.
-- Projects section with description, technologies, and external links.
-- Resume section with work experience and education.
-- Links to GitHub, LinkedIn, and email.
-
-## Featured Projects
-
-The portfolio displays the projects defined in `src/App.tsx`, including:
-
-- Task List API with Authentication
-- Gustavo Pinto Portfolio
+- Hero section with professional summary and calls to action
+- Profile panel with contact info and availability status
+- Interactive skills section with expandable cards showing proficiency levels
+- Featured projects with descriptions, tech stacks, and repo links
+- Experience timeline with work history and education
+- Social links (GitHub, LinkedIn, email)
+- Fully responsive layout
+- Smooth anchor navigation
 
 ## Run Locally
 
@@ -50,20 +41,51 @@ npm run build
 npm run preview
 ```
 
-## Where to Edit Data
-
-The main content lives in `src/App.tsx`:
-
-- `profile`: name, role, contact details, location, and social links.
-- `skills`: cards displayed in the skills section.
-- `projects`: project list with description, technologies, and link.
-- `experiences`: work experience and education.
-
 ## Project Structure
 
-- `src/App.tsx`: main portfolio content.
-- `src/index.css`: visual styling for the application.
-- `src/main.tsx`: React entry point.
+```
+src/
+├── components/
+│   ├── ui/              # Reusable UI components (Button, Card, Badge, ProgressBar)
+│   ├── sections/        # Page sections (Hero, Skills, Projects, Experience, Footer)
+│   └── layout/          # Layout components (Navigation)
+├── data/
+│   └── content.ts       # All portfolio data (profile, skills, projects, experiences)
+├── types/
+│   └── index.ts         # TypeScript type definitions
+├── App.tsx              # Root component
+├── main.tsx             # Entry point
+└── index.css            # Tailwind imports and theme config
+```
+
+## Editing Content
+
+All data is centralized in `src/data/content.ts`:
+
+- `profile`: name, role, contact details, location, and social links
+- `skills`: skill cards with name, icon, proficiency level, and description
+- `projects`: project list with description, tech stack, and repo link
+- `experiences`: work experience and education timeline
+
+To add a new skill, append an object to the `skills` array following the existing pattern. The `icon` field must match a key in the `iconMap` defined in `src/components/sections/Skills.tsx`.
+
+## Design Tokens
+
+Colors are defined as Tailwind theme variables in `src/index.css`:
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `background` | `#0a0a0a` | Page background |
+| `surface` | `#171717` | Cards and panels |
+| `border` | `#2e2e2e` | Borders |
+| `primary` | `#3b82f6` | Blue accent |
+| `accent` | `#10b981` | Green accent |
+| `text` | `#fafafa` | Primary text |
+| `text-muted` | `#a3a3a3` | Secondary text |
+
+## Deployment
+
+The project is configured for GitHub Pages via the workflow in `.github/workflows/deploy.yml`. Push to `main` to trigger an automatic build and deploy.
 
 ## Note
 
