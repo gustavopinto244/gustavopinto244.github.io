@@ -9,6 +9,8 @@ import {
   Layers,
   Puzzle,
   Cpu,
+  Box,
+  Terminal,
   type LucideIcon,
 } from 'lucide-react';
 import { skills } from '../../data/content';
@@ -25,6 +27,8 @@ const iconMap: Record<string, LucideIcon> = {
   Globe,
   Layers,
   Puzzle,
+  Box,
+  Terminal,
 };
 
 const levelLabels = {

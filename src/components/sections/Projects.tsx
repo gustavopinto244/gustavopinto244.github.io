@@ -1,6 +1,6 @@
 import { projects } from '../../data/content';
 import { Badge } from '../ui/Badge';
-import { ExternalLink, FolderGit2, Star } from 'lucide-react';
+import { ExternalLink, FolderGit2, Globe, Star } from 'lucide-react';
 
 export function Projects() {
   const publishedCount = projects.filter((p) => p.status === 'Publicado').length;
@@ -48,8 +48,14 @@ export function Projects() {
                 <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
                   <FolderGit2 className="w-5 h-5 text-accent" />
                 </div>
-                <div>
+                <div className="flex items-center gap-2">
                   <Badge variant="success">{project.status}</Badge>
+                  {project.isLive && (
+                    <span className="inline-flex items-center gap-1.5 text-xs font-bold text-green-400 bg-green-400/10 border border-green-400/20 rounded-full px-2.5 py-0.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                      Você está aqui
+                    </span>
+                  )}
                 </div>
               </div>
               <span className="text-4xl font-black text-border/40 select-none">
@@ -74,15 +80,29 @@ export function Projects() {
                 ))}
               </div>
 
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all"
-              >
-                Abrir repositório
-                <ExternalLink className="w-4 h-4" />
-              </a>
+              <div className="flex items-center gap-4">
+                {project.liveLink && (
+                  <a
+                    href={project.liveLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 text-accent font-bold hover:gap-3 transition-all"
+                  >
+                    <Globe className="w-4 h-4" />
+                    Acessar site
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                )}
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all"
+                >
+                  Abrir repositório
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              </div>
             </div>
           </article>
         ))}

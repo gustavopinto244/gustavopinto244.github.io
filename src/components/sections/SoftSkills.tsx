@@ -7,6 +7,9 @@ import {
   ClipboardList,
   Search,
   Heart,
+  Zap,
+  Eye,
+  UserCheck,
   type LucideIcon,
 } from 'lucide-react';
 import { softSkills } from '../../data/content';
@@ -18,6 +21,9 @@ const iconMap: Record<string, LucideIcon> = {
   RefreshCw,
   ClipboardList,
   Search,
+  Zap,
+  Eye,
+  UserCheck,
 };
 
 export function SoftSkills() {

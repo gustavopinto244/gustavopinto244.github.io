@@ -43,6 +43,46 @@ export const skills: Skill[] = [
     examples: ['Portfólio Pessoal', 'E-commerce Front-end'],
   },
   {
+    id: 'express',
+    name: 'Express.js',
+    icon: 'Server',
+    category: 'languages',
+    level: 'intermediario',
+    proficiency: 70,
+    description: 'Framework para construção de APIs REST, roteamento, middlewares e tratamento de erros.',
+    examples: ['API de Lista de Tarefas', 'E-commerce Back-end'],
+  },
+  {
+    id: 'python',
+    name: 'Python',
+    icon: 'Code',
+    category: 'languages',
+    level: 'iniciante',
+    proficiency: 20,
+    description: 'Linguagem de programação versátil, com foco em legibilidade e produtividade.',
+    examples: ['Projetos acadêmicos'],
+  },
+  {
+    id: 'c#',
+    name: 'C#',
+    icon: 'Code',
+    category: 'languages',
+    level: 'iniciante',
+    proficiency: 10,
+    description: 'Linguagem de programação orientada a objetos, com foco em produtividade e desempenho.',
+    examples: ['Projetos acadêmicos'],
+  },
+  {
+    id: '.net8',
+    name: '.NET 8',
+    icon: 'Layers',
+    category: 'languages',
+    level: 'iniciante',
+    proficiency: 5,
+    description: 'Framework para desenvolvimento de aplicações web, APIs e serviços com C#.',
+    examples: ['Projetos acadêmicos'],
+  },
+  {
     id: 'rest',
     name: 'APIs REST',
     icon: 'Globe',
@@ -102,6 +142,36 @@ export const skills: Skill[] = [
     description: 'Modelagem NoSQL, operações CRUD, agregações e integração com Mongoose.',
     examples: ['API de Lista de Tarefas'],
   },
+  {
+    id: 'docker',
+    name: 'Docker',
+    icon: 'Box',
+    category: 'tools',
+    level: 'iniciante',
+    proficiency: 20,
+    description: 'Containerização de aplicações, criação de imagens e gerenciamento de containers.',
+    examples: ['Deploy de projetos locais'],
+  },
+  {
+    id: 'linux',
+    name: 'Linux',
+    icon: 'Terminal',
+    category: 'tools',
+    level: 'iniciante',
+    proficiency: 45,
+    description: 'Comandos básicos, navegação em diretórios, permissões e gerenciamento de processos.',
+    examples: ['Ambiente de desenvolvimento local'],
+  },
+  {
+    id: 'insomnia',
+    name: 'Insomnia',
+    icon: 'Globe',
+    category: 'tools',
+    level: 'intermediario',
+    proficiency: 50,
+    description: 'Testes de APIs REST, envio de requisições, visualização de respostas e organização de endpoints.',
+    examples: ['Testes de APIs desenvolvidas'],
+  }
 ];
 
 export const softSkills: SoftSkill[] = [
@@ -140,6 +210,27 @@ export const softSkills: SoftSkill[] = [
     description: 'Busca constante por aprendizado e melhoria contínua.',
     context: 'Estudo autodidata e exploração de novas tecnologias e padrões.',
   },
+  {
+    id: 'fast-learning',
+    name: 'Aprendizado Rápido',
+    icon: 'Zap',
+    description: 'Capacidade de absorver e aplicar novos conhecimentos de forma eficiente.',
+    context: 'Adaptação a novas linguagens, frameworks e ferramentas em projetos diversos.',
+  },
+  {
+    id: 'attention-to-detail',
+    name: 'Atenção aos Detalhes',
+    icon: 'Eye',
+    description: 'Foco na qualidade do código, testes e revisão de funcionalidades.',
+    context: 'Garantia de entregas consistentes e livres de erros em projetos desenvolvidos.',
+  },
+  {
+    id: 'autonomy',
+    name: 'Autonomia',
+    icon: 'UserCheck',
+    description: 'Capacidade de trabalhar de forma independente e tomar decisões informadas.',
+    context: 'Desenvolvimento de projetos pessoais e acadêmicos com mínima supervisão.',
+  },
 ];
 
 export const projects: Project[] = [
@@ -157,6 +248,7 @@ export const projects: Project[] = [
       'Portfólio pessoal desenvolvido para apresentar perfil profissional, competências, experiências e projetos em um layout escuro com identidade visual neon.',
     stack: ['React', 'TypeScript', 'Vite', 'CSS3', 'HTML5'],
     link: 'https://github.com/gustavopinto244/gustavopinto244.github.io',
+    isLive: true,
     status: 'Publicado',
   },
   {
@@ -165,6 +257,7 @@ export const projects: Project[] = [
       'E-commerce full-stack com autenticação JWT, catálogo de produtos com filtros e ordenação, carrinho de compras persistente e checkout com validação de preços no servidor.',
     stack: ['React', 'TypeScript', 'Vite', 'Node.js', 'Express', 'PostgreSQL'],
     link: 'https://github.com/gustavopinto244/store-cart-project',
+    liveLink: 'https://store-cart-project.vercel.app',
     status: 'Publicado',
   },
 ];

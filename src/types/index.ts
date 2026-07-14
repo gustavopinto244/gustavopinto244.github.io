@@ -24,6 +24,8 @@ export type Project = {
   description: string;
   stack: string[];
   link: string;
+  liveLink?: string;
+  isLive?: boolean;
   status: string;
 };
 
