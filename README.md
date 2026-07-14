@@ -82,11 +82,3 @@ Colors are defined as Tailwind theme variables in `src/index.css`:
 | `accent` | `#10b981` | Green accent |
 | `text` | `#fafafa` | Primary text |
 | `text-muted` | `#a3a3a3` | Secondary text |
-
-## Deployment
-
-The project is configured for GitHub Pages via the workflow in `.github/workflows/deploy.yml`. Push to `main` to trigger an automatic build and deploy.
-
-## Note
-
-When adding new projects, make sure external links include the full `https://` protocol to avoid navigation issues.
