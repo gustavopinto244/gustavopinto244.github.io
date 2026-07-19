@@ -1,4 +1,4 @@
-import { projects } from '../../data/content';
+import { projects } from '../../data';
 import { Badge } from '../ui/Badge';
 import { ExternalLink, FolderGit2, Globe, Star } from 'lucide-react';
 

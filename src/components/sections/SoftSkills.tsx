@@ -12,7 +12,7 @@ import {
   UserCheck,
   type LucideIcon,
 } from 'lucide-react';
-import { softSkills } from '../../data/content';
+import { softSkills } from '../../data';
 
 const iconMap: Record<string, LucideIcon> = {
   MessageCircle,

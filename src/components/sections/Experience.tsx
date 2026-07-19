@@ -1,4 +1,4 @@
-import { experiences } from '../../data/content';
+import { experiences } from '../../data';
 import { Briefcase, GraduationCap, Building2, Calendar } from 'lucide-react';
 
 const getIcon = (role: string) => {

@@ -1,4 +1,4 @@
-import { profile } from '../../data/content';
+import { profile } from '../../data';
 import { Button } from '../ui/Button';
 import { ArrowDown, MapPin, Calendar } from 'lucide-react';
 

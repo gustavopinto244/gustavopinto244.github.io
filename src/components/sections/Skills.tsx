@@ -13,7 +13,7 @@ import {
   Terminal,
   type LucideIcon,
 } from 'lucide-react';
-import { skills } from '../../data/content';
+import { skills } from '../../data';
 import { Badge } from '../ui/Badge';
 import { ProgressBar } from '../ui/ProgressBar';
 import type { SkillCategory } from '../../types';

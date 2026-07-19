@@ -1,5 +1,5 @@
 import { Mail } from 'lucide-react';
-import { profile } from '../../data/content';
+import { profile } from '../../data';
 
 export function Footer() {
   return (
