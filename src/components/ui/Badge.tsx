@@ -9,14 +9,14 @@ type BadgeProps = {
 export function Badge({ children, variant = 'default', className }: BadgeProps) {
   const variants = {
     default: 'border-border bg-surface text-text-muted',
-    success: 'border-accent/30 bg-accent/10 text-accent',
-    primary: 'border-primary/30 bg-primary/10 text-primary',
+    success: 'border-accent/40 bg-accent/10 text-accent',
+    primary: 'border-primary/40 bg-primary/10 text-primary',
   };
 
   return (
     <span
       className={clsx(
-        'inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold border',
+        'inline-flex items-center px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] border',
         variants[variant],
         className
       )}

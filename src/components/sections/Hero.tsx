@@ -6,43 +6,36 @@ export function Hero() {
   return (
     <section
       id="inicio"
-      className="relative grid grid-cols-1 lg:grid-cols-[1fr_330px] items-center gap-12 min-h-[calc(100vh-98px)] pb-16"
+      className="relative grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-12 lg:gap-16 pt-16 md:pt-24 pb-20 min-h-[calc(100vh-180px)]"
     >
-      <div className="absolute -left-20 top-1/4 w-40 h-40 bg-primary/10 rounded-full blur-3xl" />
-      
-      <div className="relative max-w-3xl border border-border rounded-xl bg-surface/40 backdrop-blur-sm p-8 md:p-10 shadow-xl shadow-black/20">
-        <div className="absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-        <div className="absolute top-8 bottom-8 -left-px w-px bg-gradient-to-b from-transparent via-primary/30 to-transparent" />
-        
-        <div className="flex items-center gap-2 mb-6">
-          <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-          <span className="text-primary text-sm font-medium">
+      <div className="max-w-3xl">
+        <div className="flex items-center gap-3 mb-8">
+          <span className="w-2 h-2 bg-primary" />
+          <span className="text-[11px] font-bold uppercase tracking-[0.22em] text-primary">
             Portfólio de {profile.githubUser}
           </span>
+          <span className="flex-1 h-px bg-border" />
         </div>
-        
-        <div className="flex gap-4 mb-6">
-          <div className="w-1 bg-gradient-to-b from-primary to-accent rounded-full" />
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-[0.96]">
-            Clareza e 
-            <span className="block text-accent"> organização</span>
-          </h1>
-        </div>
-        
-        <p className="text-lg md:text-xl text-text-muted leading-relaxed mb-8 max-w-2xl">
-          Em busca de uma oportunidade de estágio na área de Tecnologia, contribuindo com 
-          desenvolvimento de software, análise de dados, automação ou IA, enquanto evoluo 
+
+        <h1 className="font-display text-6xl md:text-7xl lg:text-8xl font-black leading-[0.95] tracking-tight mb-8">
+          Clareza e
+          <span className="block font-light italic text-primary">organização</span>
+        </h1>
+
+        <p className="text-lg md:text-xl text-text-muted leading-relaxed mb-10 max-w-2xl border-l-2 border-primary pl-6">
+          Em busca de uma oportunidade de estágio na área de Tecnologia, contribuindo com
+          desenvolvimento de software, análise de dados, automação ou IA, enquanto evoluo
           tecnicamente e agrego valor à equipe.
         </p>
 
-        <div className="flex flex-wrap items-center gap-4 mb-6">
+        <div className="flex flex-wrap items-center gap-4 mb-12">
           <Button href="#projetos">Ver projetos</Button>
           <Button href={`mailto:${profile.email}`} variant="secondary">
             Entrar em contato
           </Button>
         </div>
 
-        <div className="flex flex-wrap gap-4 pt-6 border-t border-border">
+        <div className="flex flex-wrap gap-x-10 gap-y-3 pt-5 border-t border-border">
           <div className="flex items-center gap-2 text-sm text-text-muted">
             <MapPin className="w-4 h-4 text-primary" />
             <span>{profile.location}</span>
@@ -54,40 +47,36 @@ export function Hero() {
         </div>
       </div>
 
-      <aside className="relative border border-border bg-surface/80 backdrop-blur-sm rounded-xl p-7 space-y-4 shadow-xl shadow-black/20">
-        <div className="absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-        
-        <div className="flex items-center gap-2.5 text-accent text-sm font-bold">
-          <span className="w-2.5 h-2.5 rounded-full bg-accent animate-pulse" />
+      <aside className="relative border border-border bg-surface p-7 self-start shadow-[6px_6px_0_0_var(--color-border)]">
+        <div className="absolute -top-3 left-6 px-2 bg-background inline-flex items-center gap-2 text-accent text-[11px] font-bold uppercase tracking-[0.18em]">
+          <span className="w-2 h-2 bg-accent animate-pulse" />
           Aberto para estágio
         </div>
-        
-        <h2 className="text-xl md:text-2xl font-bold">{profile.name}</h2>
-        <p className="text-text-muted">{profile.role}</p>
-        
-        <ul className="space-y-2 text-text-muted text-sm">
-          <li className="flex items-center gap-2">
-            <span className="w-1 h-1 rounded-full bg-border" />
-            {profile.location}
-          </li>
-          <li className="flex items-center gap-2">
-            <span className="w-1 h-1 rounded-full bg-border" />
-            {profile.phone}
-          </li>
-          <li className="flex items-center gap-2">
-            <span className="w-1 h-1 rounded-full bg-border" />
-            {profile.email}
-          </li>
-          <li className="flex items-center gap-2">
-            <span className="w-1 h-1 rounded-full bg-border" />
-            @{profile.githubUser}
-          </li>
+
+        <h2 className="font-display text-2xl font-bold leading-tight mt-2">{profile.name}</h2>
+        <p className="text-primary text-sm font-semibold mt-1 mb-5">{profile.role}</p>
+
+        <ul className="text-sm">
+          {[
+            profile.location,
+            profile.phone,
+            profile.email,
+            `@${profile.githubUser}`,
+          ].map((item) => (
+            <li
+              key={item}
+              className="py-2.5 border-t border-border text-text-muted break-all"
+            >
+              {item}
+            </li>
+          ))}
+          <li className="border-t border-border" aria-hidden="true" />
         </ul>
       </aside>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-text-muted animate-bounce">
-        <span className="text-xs">Scroll</span>
-        <ArrowDown className="w-4 h-4" />
+      <div className="absolute bottom-2 left-0 flex items-center gap-3 text-text-muted">
+        <span className="text-[10px] font-bold uppercase tracking-[0.22em]">Continue lendo</span>
+        <ArrowDown className="w-4 h-4 animate-bounce" />
       </div>
     </section>
   );

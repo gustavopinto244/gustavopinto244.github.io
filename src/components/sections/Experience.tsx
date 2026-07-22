@@ -1,5 +1,5 @@
 import { experiences } from '../../data';
-import { Briefcase, GraduationCap, Building2, Calendar } from 'lucide-react';
+import { Briefcase, GraduationCap, Building2 } from 'lucide-react';
 
 const getIcon = (role: string) => {
   if (role.toLowerCase().includes('graduando')) return GraduationCap;
@@ -8,57 +8,48 @@ const getIcon = (role: string) => {
 };
 
 export function Experience() {
-  const totalYears = '4+';
   const totalExperiences = experiences.length;
 
   return (
-    <section id="curriculo" className="relative py-24">
-      <div className="absolute -right-16 bottom-1/4 w-56 h-56 bg-accent/5 rounded-full blur-3xl" />
-      
-      <div className="relative grid grid-cols-1 lg:grid-cols-[0.75fr_1.25fr] gap-10 items-start">
+    <section id="curriculo" className="relative pt-20">
+      <div className="grid grid-cols-1 lg:grid-cols-[0.7fr_1.3fr] gap-10 lg:gap-16 items-start border-t-2 border-text pt-8">
         <div className="lg:sticky lg:top-8">
-          <div className="border border-border rounded-xl bg-surface/40 backdrop-blur-sm p-6">
-            <div className="absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
-            
-            <p className="text-primary text-sm font-bold mb-2">Currículo</p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Experiência e formação</h2>
-            <p className="text-text-muted mb-6">
-              Trajetória profissional e acadêmica que moldou minhas competências.
-            </p>
-            
-            <div className="space-y-3">
-              <div className="flex items-center gap-3 p-3 border border-border rounded-lg bg-surface/60">
-                <div className="p-2 rounded-md bg-accent/10">
-                  <Briefcase className="w-4 h-4 text-accent" />
-                </div>
-                <div>
-                  <span className="block text-xl font-black text-accent">{totalExperiences}</span>
-                  <span className="text-xs text-text-muted">experiências</span>
-                </div>
-              </div>
-            </div>
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-primary mb-3">
+            <span className="font-display italic text-text-muted/70">04 — </span>
+            Currículo
+          </p>
+          <h2 className="font-display text-4xl md:text-5xl font-black tracking-tight mb-4">
+            Experiência e formação
+          </h2>
+          <p className="text-text-muted mb-8">
+            Trajetória profissional e acadêmica que moldou minhas competências.
+          </p>
+
+          <div className="flex items-baseline gap-2 border-b border-border pb-2 max-w-[220px]">
+            <Briefcase className="w-4 h-4 text-accent self-center" />
+            <span className="font-display text-4xl font-black text-accent leading-none">{totalExperiences}</span>
+            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-text-muted">experiências</span>
           </div>
         </div>
 
-        <div className="relative space-y-4">
-          <div className="absolute left-[19px] top-4 bottom-4 w-px bg-gradient-to-b from-accent/50 via-border to-transparent" />
-          
+        <div className="relative border-l-2 border-text pl-8 md:pl-10 space-y-10">
           {experiences.map((item) => {
             const Icon = getIcon(item.role);
-            
+
             return (
-              <article
-                key={`${item.role}-${item.company}`}
-                className="group relative pl-12 py-5 pr-5 border border-border bg-surface/80 backdrop-blur-sm rounded-xl hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5 transition-all duration-300"
-              >
-                <div className="absolute left-3 top-6 w-8 h-8 rounded-full bg-surface border border-accent/50 flex items-center justify-center">
-                  <Icon className="w-4 h-4 text-accent" />
+              <article key={`${item.role}-${item.company}`} className="group relative">
+                <div className="absolute -left-[43px] md:-left-[51px] top-1 w-5 h-5 bg-background border-2 border-text flex items-center justify-center group-hover:bg-primary group-hover:border-primary transition-colors">
+                  <Icon className="w-3 h-3 text-text group-hover:text-surface transition-colors" />
                 </div>
-                
-                <span className="text-primary text-sm font-bold">{item.period}</span>
-                <h3 className="text-lg font-bold mt-2">{item.role}</h3>
-                <strong className="block text-accent mb-3">{item.company}</strong>
-                <p className="text-text-muted leading-relaxed">{item.summary}</p>
+
+                <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-primary">
+                  {item.period}
+                </span>
+                <h3 className="font-display text-2xl font-bold tracking-tight mt-2 group-hover:text-primary transition-colors">
+                  {item.role}
+                </h3>
+                <strong className="block text-accent font-semibold mb-3">{item.company}</strong>
+                <p className="text-text-muted leading-relaxed max-w-xl">{item.summary}</p>
               </article>
             );
           })}

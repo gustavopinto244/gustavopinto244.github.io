@@ -10,11 +10,11 @@ type ButtonProps = {
 
 export function Button({ children, href, variant = 'primary', className }: ButtonProps) {
   const baseStyles =
-    'inline-flex items-center justify-center min-h-12 px-5 rounded-lg font-bold transition-all duration-200 hover:-translate-y-0.5';
+    'inline-flex items-center justify-center min-h-12 px-6 font-bold text-xs uppercase tracking-[0.18em] transition-all duration-200 hover:-translate-y-0.5';
 
   const variants = {
-    primary: 'bg-primary text-white hover:bg-primary/90',
-    secondary: 'border border-border text-text hover:border-primary/50 hover:bg-surface',
+    primary: 'bg-text text-surface hover:bg-primary',
+    secondary: 'border border-text/60 text-text hover:border-primary hover:text-primary',
   };
 
   const styles = clsx(baseStyles, variants[variant], className);

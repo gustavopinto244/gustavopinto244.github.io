@@ -1,6 +1,6 @@
 # Gustavo Pinto Portfolio
 
-Personal portfolio built with React, TypeScript, Vite, and Tailwind CSS. Dark mode design with a clean layout, componentized architecture, and an interactive skills section.
+Personal portfolio built with React, TypeScript, Vite, and Tailwind CSS. Light "editorial/print" design (branch `redesign/editorial-light`) with a warm paper palette, serif display typography, hairline rules, numbered magazine-style sections, and an interactive skills index.
 
 ## Tech Stack
 
@@ -50,7 +50,12 @@ src/
 │   ├── sections/        # Page sections (Hero, Skills, Projects, Experience, Footer)
 │   └── layout/          # Layout components (Navigation)
 ├── data/
-│   └── content.ts       # All portfolio data (profile, skills, projects, experiences)
+│   ├── profile.ts        # Profile info (name, role, contact, social links)
+│   ├── skills.ts         # Technical skills with proficiency levels
+│   ├── softSkills.ts     # Behavioral skills
+│   ├── projects.ts       # Featured projects
+│   ├── experiences.ts    # Work and education timeline
+│   └── index.ts          # Re-exports
 ├── types/
 │   └── index.ts         # TypeScript type definitions
 ├── App.tsx              # Root component
@@ -60,7 +65,7 @@ src/
 
 ## Editing Content
 
-All data is centralized in `src/data/content.ts`:
+All data is centralized in `src/data/`:
 
 - `profile`: name, role, contact details, location, and social links
 - `skills`: skill cards with name, icon, proficiency level, and description
@@ -71,14 +76,16 @@ To add a new skill, append an object to the `skills` array following the existin
 
 ## Design Tokens
 
-Colors are defined as Tailwind theme variables in `src/index.css`:
+Colors and fonts are defined as Tailwind theme variables in `src/index.css`:
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| `background` | `#0a0a0a` | Page background |
-| `surface` | `#171717` | Cards and panels |
-| `border` | `#2e2e2e` | Borders |
-| `primary` | `#3b82f6` | Blue accent |
-| `accent` | `#10b981` | Green accent |
-| `text` | `#fafafa` | Primary text |
-| `text-muted` | `#a3a3a3` | Secondary text |
+| `background` | `#f5f1e8` | Warm paper page background |
+| `surface` | `#fdfbf5` | Cards and panels |
+| `border` | `#d8d0bf` | Hairline rules and borders |
+| `primary` | `#c2410c` | Terracotta accent |
+| `accent` | `#1d6a4f` | Deep green accent |
+| `text` | `#1c1917` | Ink text |
+| `text-muted` | `#71695c` | Secondary text |
+| `font-display` | Fraunces (serif) | Headlines and numerals |
+| `font-sans` | Inter | Body text |
