@@ -17,6 +17,7 @@ import {
 import { skills } from '../../data';
 import { Badge } from '../ui/Badge';
 import { ProgressBar } from '../ui/ProgressBar';
+import { SectionHeader } from '../ui/SectionHeader';
 import type { SkillCategory } from '../../types';
 
 const iconMap: Record<string, LucideIcon> = {
@@ -33,21 +34,15 @@ const iconMap: Record<string, LucideIcon> = {
 };
 
 const levelLabels = {
-  iniciante: 'Iniciante',
-  intermediario: 'Intermediário',
-  avancado: 'Avançado',
+  iniciante: 'iniciante',
+  intermediario: 'intermediário',
+  avancado: 'avançado',
 };
 
 const categoryLabels: Record<SkillCategory, string> = {
-  languages: 'Linguagens & Frameworks',
-  techniques: 'Técnicas & Conceitos',
-  tools: 'Ferramentas',
-};
-
-const categoryIcons: Record<SkillCategory, LucideIcon> = {
-  languages: Code,
-  techniques: Layers,
-  tools: Cpu,
+  languages: 'linguagens_&_frameworks',
+  techniques: 'técnicas_&_conceitos',
+  tools: 'ferramentas',
 };
 
 const categoryOrder: SkillCategory[] = ['languages', 'techniques', 'tools'];
@@ -62,75 +57,67 @@ export function Skills() {
   const skillsByCategory = categoryOrder.map((category) => ({
     category,
     label: categoryLabels[category],
-    icon: categoryIcons[category],
     items: skills.filter((s) => s.category === category),
   }));
 
-  const totalSkills = skills.length;
-
   return (
-    <section id="sobre" className="relative pt-20" aria-label="Competências">
-      <div className="border-t-2 border-text pt-8 mb-12">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-          <div className="max-w-xl">
-            <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-primary mb-3">
-              <span className="font-display italic text-text-muted/70">01 — </span>
-              Habilidades
-            </p>
-            <h2 className="font-display text-4xl md:text-5xl font-black tracking-tight">
-              Competências técnicas
-            </h2>
-            <p className="text-text-muted mt-4">
-              Tecnologias e conceitos que aplico no desenvolvimento de projetos. Clique em cada item para ver detalhes.
-            </p>
-          </div>
+    <section id="sobre" className="pt-20" aria-label="Competências">
+      <SectionHeader
+        command="ls ./skills --detalhes"
+        title="Competências técnicas"
+        description="Tecnologias e conceitos que aplico no desenvolvimento de projetos. Clique em cada item para ver detalhes."
+        meta={
+          <p className="text-sm text-text-muted">
+            total: <span className="text-primary font-bold">{skills.length}</span> tecnologias
+          </p>
+        }
+      />
 
-          <div className="flex items-baseline gap-2 border-b border-border pb-2">
-            <span className="font-display text-5xl font-black text-primary leading-none">{totalSkills}</span>
-            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-text-muted">Tecnologias</span>
-          </div>
-        </div>
-      </div>
-
-      <div className="space-y-12">
-        {skillsByCategory.map(({ category, label, icon: CategoryIcon, items }) => (
+      <div className="space-y-10">
+        {skillsByCategory.map(({ category, label, items }) => (
           <div key={category}>
-            <h3 className="flex items-center gap-3 mb-2 text-[11px] font-bold uppercase tracking-[0.22em] text-text-muted">
-              <CategoryIcon className="w-4 h-4 text-primary" />
-              {label}
-              <span className="text-text-muted/60">({items.length})</span>
-              <span className="flex-1 h-px bg-border" />
+            <h3 className="text-sm text-accent mb-3">
+              <span className="text-text-muted">##</span> {label}{' '}
+              <span className="text-text-muted">({items.length})</span>
             </h3>
 
-            <div className="border-b border-border">
-              {items.map((skill) => {
+            <div className="rounded-xl border border-border bg-surface overflow-hidden">
+              {items.map((skill, index) => {
                 const Icon = iconMap[skill.icon];
                 const isExpanded = expandedId === skill.id;
 
                 return (
-                  <div key={skill.id} className="border-t border-border">
+                  <div
+                    key={skill.id}
+                    className={index > 0 ? 'border-t border-border' : ''}
+                  >
                     <button
                       onClick={() => toggleSkill(skill.id)}
-                      className="group w-full flex items-center gap-4 py-4 text-left"
+                      className="group w-full flex items-center gap-3 md:gap-4 px-4 md:px-5 py-4 text-left transition-colors hover:bg-surface-hover"
                       aria-expanded={isExpanded}
                     >
                       {Icon && (
-                        <Icon className="w-5 h-5 shrink-0 text-text-muted group-hover:text-primary transition-colors" strokeWidth={1.75} />
+                        <Icon
+                          className="w-4 h-4 shrink-0 text-text-muted transition-colors group-hover:text-primary"
+                          strokeWidth={1.75}
+                        />
                       )}
 
-                      <span className="font-display text-lg md:text-xl font-bold group-hover:text-primary transition-colors">
+                      <span className="font-semibold text-sm md:text-base transition-colors group-hover:text-primary">
                         {skill.name}
                       </span>
 
-                      <span className="hidden sm:block flex-1 border-b border-dotted border-border mx-2 -translate-y-1" />
+                      <span className="hidden lg:block flex-1 mx-2">
+                        <ProgressBar value={skill.proficiency} />
+                      </span>
 
-                      <span className="hidden md:inline-flex">
+                      <span className="hidden sm:inline-flex ml-auto lg:ml-0">
                         <Badge variant={skill.level === 'intermediario' ? 'primary' : 'default'}>
                           {levelLabels[skill.level]}
                         </Badge>
                       </span>
 
-                      <span className="ml-auto md:ml-0 w-12 text-right text-sm font-semibold text-text-muted tabular-nums">
+                      <span className="ml-auto sm:ml-0 lg:hidden text-xs font-semibold text-text-muted tabular-nums">
                         {skill.proficiency}%
                       </span>
 
@@ -140,12 +127,15 @@ export function Skills() {
                     </button>
 
                     {isExpanded && (
-                      <div className="grid grid-cols-1 md:grid-cols-[1fr_260px] gap-6 pb-6 pl-9 pr-1 animate-in fade-in duration-300">
+                      <div className="grid grid-cols-1 md:grid-cols-[1fr_280px] gap-6 border-t border-border bg-background/50 px-4 md:px-5 py-5">
                         <div>
-                          <p className="text-text-muted leading-relaxed mb-4">{skill.description}</p>
+                          <p className="text-sm text-text-muted leading-relaxed mb-4">
+                            <span className="text-accent">// </span>
+                            {skill.description}
+                          </p>
 
-                          <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-text-muted block mb-2">
-                            Projetos relacionados
+                          <span className="block text-xs text-text-muted mb-2">
+                            <span className="text-primary">$</span> projetos_relacionados:
                           </span>
                           <div className="flex flex-wrap gap-2">
                             {skill.examples.map((example) => (
@@ -155,16 +145,11 @@ export function Skills() {
                         </div>
 
                         <div className="md:border-l md:border-border md:pl-6">
-                          <div className="flex items-center justify-between mb-2">
-                            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-text-muted">
-                              Proficiência
-                            </span>
+                          <div className="flex items-center justify-between mb-3">
+                            <span className="text-xs text-text-muted">proficiência</span>
                             <Badge variant="primary">{levelLabels[skill.level]}</Badge>
                           </div>
                           <ProgressBar value={skill.proficiency} />
-                          <span className="font-display text-3xl font-black text-primary mt-2 block tabular-nums">
-                            {skill.proficiency}%
-                          </span>
                         </div>
                       </div>
                     )}

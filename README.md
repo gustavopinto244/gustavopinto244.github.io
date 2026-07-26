@@ -1,6 +1,6 @@
 # Gustavo Pinto Portfolio
 
-Personal portfolio built with React, TypeScript, Vite, and Tailwind CSS. Light "editorial/print" design (branch `redesign/editorial-light`) with a warm paper palette, serif display typography, hairline rules, numbered magazine-style sections, and an interactive skills index.
+Personal portfolio built with React, TypeScript, Vite, and Tailwind CSS. Dark "terminal/neon" design (branch `redesign/terminal-neon`) with a near-black palette, neon green/cyan accents, monospace typography, terminal-window cards, ASCII progress bars, and a git-log experience timeline.
 
 ## Tech Stack
 
@@ -13,11 +13,11 @@ Personal portfolio built with React, TypeScript, Vite, and Tailwind CSS. Light "
 
 ## Features
 
-- Hero section with professional summary and calls to action
-- Profile panel with contact info and availability status
-- Interactive skills section with expandable cards showing proficiency levels
-- Featured projects with descriptions, tech stacks, and repo links
-- Experience timeline with work history and education
+- Hero section with `whoami` prompt, professional summary and calls to action
+- Terminal-window contact card with availability status
+- Interactive skills section with expandable rows and ASCII proficiency bars
+- Featured projects as terminal windows with descriptions, tech stacks, and repo links
+- Git-log style experience timeline with work history and education
 - Social links (GitHub, LinkedIn, email)
 - Fully responsive layout
 - Smooth anchor navigation
@@ -46,9 +46,9 @@ npm run preview
 ```
 src/
 ├── components/
-│   ├── ui/              # Reusable UI components (Button, Card, Badge, ProgressBar)
-│   ├── sections/        # Page sections (Hero, Skills, Projects, Experience, Footer)
-│   └── layout/          # Layout components (Navigation)
+│   ├── ui/              # Reusable UI components (Button, Card, Badge, ProgressBar, SectionHeader)
+│   ├── sections/        # Page sections (Hero, Skills, SoftSkills, Projects, Experience)
+│   └── layout/          # Layout components (Navigation, Footer)
 ├── data/
 │   ├── profile.ts        # Profile info (name, role, contact, social links)
 │   ├── skills.ts         # Technical skills with proficiency levels
@@ -80,12 +80,13 @@ Colors and fonts are defined as Tailwind theme variables in `src/index.css`:
 
 | Token | Value | Usage |
 |-------|-------|-------|
-| `background` | `#f5f1e8` | Warm paper page background |
-| `surface` | `#fdfbf5` | Cards and panels |
-| `border` | `#d8d0bf` | Hairline rules and borders |
-| `primary` | `#c2410c` | Terracotta accent |
-| `accent` | `#1d6a4f` | Deep green accent |
-| `text` | `#1c1917` | Ink text |
-| `text-muted` | `#71695c` | Secondary text |
-| `font-display` | Fraunces (serif) | Headlines and numerals |
-| `font-sans` | Inter | Body text |
+| `background` | `#07090d` | Near-black page background |
+| `surface` | `#0d1117` | Cards and panels |
+| `surface-hover` | `#161d29` | Hover state on rows and cards |
+| `border` | `#232c3d` | Borders and dividers |
+| `primary` | `#00ff88` | Neon terminal green |
+| `accent` | `#22d3ee` | Cyan accent |
+| `text` | `#e6edf3` | Primary text |
+| `text-muted` | `#8b98ab` | Secondary text |
+| `font-display` | Space Grotesk | Headlines |
+| `font-sans` | JetBrains Mono | Body and UI text |

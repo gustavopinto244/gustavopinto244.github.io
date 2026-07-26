@@ -2,6 +2,13 @@ import type { Experience } from '../types';
 
 export const experiences: Experience[] = [
   {
+    role: 'Graduando em Sistemas de Informação',
+    company: 'Universidade La Salle - RJ',
+    period: 'Março 2026 - Dezembro 2029',
+    summary:
+      'Formação em andamento com foco em desenvolvimento de software, banco de dados, lógica de programação e fundamentos de sistemas.',
+  },
+  {
     role: 'Queijeiro / Técnico em Laticínios',
     company: 'Terra Límpida Queijos Orgânicos',
     period: 'Maio 2023 - Fevereiro 2025',
@@ -14,12 +21,5 @@ export const experiences: Experience[] = [
     period: 'Janeiro 2021 - Abril 2023',
     summary:
       'Organização de atividades internas, alinhamento entre equipes, apoio ao planejamento de eventos, coordenação de tarefas e acompanhamento de processos em ambiente colaborativo.',
-  },
-  {
-    role: 'Graduando em Sistemas de Informação',
-    company: 'Universidade La Salle - RJ',
-    period: 'Março 2026 - Dezembro 2029',
-    summary:
-      'Formação em andamento com foco em desenvolvimento de software, banco de dados, lógica de programação e fundamentos de sistemas.',
   },
 ];

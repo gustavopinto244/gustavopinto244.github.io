@@ -9,7 +9,7 @@ import { Footer } from './components/layout/Footer';
 function App() {
   return (
     <div className="min-h-screen">
-      <div className="w-[min(1160px,calc(100%-32px))] mx-auto border-x border-border px-5 md:px-10 pb-10">
+      <div className="w-[min(1120px,calc(100%-32px))] mx-auto px-5 md:px-10 pb-10">
         <Navigation />
 
         <main>

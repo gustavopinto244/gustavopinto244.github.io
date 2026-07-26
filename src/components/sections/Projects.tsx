@@ -1,110 +1,103 @@
 import { projects } from '../../data';
 import { Badge } from '../ui/Badge';
-import { ArrowUpRight, FolderGit2, Globe, Star } from 'lucide-react';
+import { SectionHeader } from '../ui/SectionHeader';
+import { ArrowUpRight, FolderGit2, Globe } from 'lucide-react';
+
+const slugify = (name: string) =>
+  name
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
 
 export function Projects() {
-  const publishedCount = projects.filter((p) => p.status === 'Publicado').length;
-  const totalStacks = new Set(projects.flatMap((p) => p.stack)).size;
-
   return (
-    <section id="projetos" className="relative pt-20">
-      <div className="border-t-2 border-text pt-8 mb-12">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-          <div className="max-w-xl">
-            <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-primary mb-3">
-              <span className="font-display italic text-text-muted/70">03 — </span>
-              GitHub
-            </p>
-            <h2 className="font-display text-4xl md:text-5xl font-black tracking-tight">
-              Projetos em destaque
-            </h2>
-            <p className="text-text-muted mt-4">
-              Projetos que demonstram minha evolução técnica e capacidade de construir soluções completas.
-            </p>
-          </div>
+    <section id="projetos" className="pt-20">
+      <SectionHeader
+        command="ls ~/projetos --publicados"
+        title="Projetos em destaque"
+        description="Projetos que demonstram minha evolução técnica e capacidade de construir soluções completas."
+        meta={
+          <p className="text-sm text-text-muted">
+            total: <span className="text-primary font-bold">{projects.length}</span> repositórios
+          </p>
+        }
+      />
 
-          <div className="flex items-center gap-8 border-b border-border pb-2">
-            <div className="flex items-baseline gap-2">
-              <FolderGit2 className="w-4 h-4 text-primary self-center" />
-              <span className="font-display text-4xl font-black text-primary leading-none">{projects.length}</span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-text-muted">projetos</span>
-            </div>
-            <div className="flex items-baseline gap-2">
-              <Star className="w-4 h-4 text-accent self-center" />
-              <span className="font-display text-4xl font-black text-accent leading-none">{publishedCount}</span>
-              <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-text-muted">publicados</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="border-b border-border">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         {projects.map((project, index) => (
           <article
             key={project.name}
-            className="group grid grid-cols-1 lg:grid-cols-[110px_1fr_auto] gap-6 lg:gap-10 border-t border-border py-10"
+            className={`
+              group flex flex-col rounded-xl border border-border bg-surface overflow-hidden
+              transition-all duration-200 hover:border-primary/40 hover:shadow-[0_0_40px_-14px_var(--color-primary)]
+              ${index === 0 ? 'lg:col-span-2' : ''}
+            `}
           >
-            <span className="font-display text-6xl lg:text-7xl font-black text-border leading-none select-none group-hover:text-primary/30 transition-colors">
-              {String(index + 1).padStart(2, '0')}
-            </span>
-
-            <div>
-              <div className="flex flex-wrap items-center gap-2 mb-3">
-                <Badge variant="success">{project.status}</Badge>
+            <div className="flex items-center gap-2 border-b border-border bg-background/60 px-4 py-2.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
+              <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
+              <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
+              <span className="ml-2 text-xs text-text-muted truncate">
+                ~/projetos/{slugify(project.name)}
+              </span>
+              <span className="ml-auto flex items-center gap-2 shrink-0">
                 {project.isLive && (
-                  <span className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-accent">
-                    <span className="w-1.5 h-1.5 bg-accent animate-pulse" />
-                    Você está aqui
+                  <span className="hidden sm:inline-flex items-center gap-1.5 text-[11px] text-accent">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                    no ar
                   </span>
                 )}
-              </div>
+                <Badge variant="success">{project.status.toLowerCase()}</Badge>
+              </span>
+            </div>
 
-              <h3 className="font-display text-2xl md:text-3xl font-bold tracking-tight mb-3 group-hover:text-primary transition-colors">
+            <div className="flex flex-col flex-1 p-5 md:p-6">
+              <h3 className="font-display text-xl md:text-2xl font-bold tracking-tight mb-3 transition-colors group-hover:text-primary">
                 {project.name}
               </h3>
 
-              <p className="text-text-muted leading-relaxed mb-5 max-w-2xl">
+              <p className="text-sm text-text-muted leading-relaxed mb-5">
+                <span className="text-accent">// </span>
                 {project.description}
               </p>
 
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 mb-6">
                 {project.stack.map((item) => (
                   <Badge key={item} variant="primary">
                     {item}
                   </Badge>
                 ))}
               </div>
-            </div>
 
-            <div className="flex lg:flex-col items-start gap-4 lg:gap-3 lg:text-right lg:min-w-[170px]">
-              {project.liveLink && (
+              <div className="mt-auto flex flex-wrap items-center gap-3">
                 <a
-                  href={project.liveLink}
+                  href={project.link}
                   target="_blank"
                   rel="noreferrer"
-                  className="group/link inline-flex items-center gap-1.5 text-sm font-bold text-accent hover:text-primary transition-colors"
+                  className="group/link inline-flex items-center gap-2 rounded-lg border border-border bg-background px-3.5 py-2 text-xs font-semibold transition-colors hover:border-primary/60 hover:text-primary"
                 >
-                  <Globe className="w-4 h-4" />
-                  Acessar site
-                  <ArrowUpRight className="w-4 h-4 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                  <FolderGit2 className="w-4 h-4" />
+                  repositório
+                  <ArrowUpRight className="w-3.5 h-3.5 text-text-muted transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 group-hover/link:text-primary" />
                 </a>
-              )}
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noreferrer"
-                className="group/link inline-flex items-center gap-1.5 text-sm font-bold hover:text-primary transition-colors"
-              >
-                Abrir repositório
-                <ArrowUpRight className="w-4 h-4 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
-              </a>
+                {project.liveLink && (
+                  <a
+                    href={project.liveLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group/link inline-flex items-center gap-2 rounded-lg border border-border bg-background px-3.5 py-2 text-xs font-semibold transition-colors hover:border-accent/60 hover:text-accent"
+                  >
+                    <Globe className="w-4 h-4" />
+                    acessar site
+                    <ArrowUpRight className="w-3.5 h-3.5 text-text-muted transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 group-hover/link:text-accent" />
+                  </a>
+                )}
+              </div>
             </div>
           </article>
         ))}
-      </div>
-
-      <div className="mt-4 text-right text-[11px] font-semibold uppercase tracking-[0.18em] text-text-muted">
-        {totalStacks} tecnologias utilizadas no total
       </div>
     </section>
   );
