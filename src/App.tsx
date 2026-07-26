@@ -8,20 +8,16 @@ import { Footer } from './components/layout/Footer';
 
 function App() {
   return (
-    <div className="min-h-screen">
-      <div className="w-[min(1160px,calc(100%-32px))] mx-auto border-x border-border px-5 md:px-10 pb-10">
-        <Navigation />
-
-        <main>
-          <Hero />
-          <Skills />
-          <SoftSkills />
-          <Projects />
-          <Experience />
-        </main>
-
-        <Footer />
-      </div>
+    <div className="site-shell">
+      <Navigation />
+      <main>
+        <Hero />
+        <Skills />
+        <SoftSkills />
+        <Projects />
+        <Experience />
+      </main>
+      <Footer />
     </div>
   );
 }
