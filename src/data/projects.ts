@@ -4,18 +4,18 @@ export const projects: Project[] = [
   {
     name: 'API de Lista de Tarefas com Autenticação',
     description:
-      'Projeto back-end em desenvolvimento com registro e login de usuários, autenticação e integração com MongoDB para persistência de dados. A aplicação organiza tarefas com operações CRUD e boas práticas de estruturação.',
+      'Projeto back-end de modelo MVC com registro e login de usuários, autenticação e integração com MongoDB para persistência de dados. A aplicação organiza tarefas com operações CRUD e boas práticas de estruturação.',
     stack: ['Node.js', 'TypeScript', 'MongoDB', 'API REST', 'Autenticação'],
     link: 'https://github.com/gustavopinto244/task-list-project',
     isLive: true,
     liveLink: 'https://gustavopinto.dev.br',
-    status: 'Finalizado',
+    status: 'Publicado',
   },
   {
-    name: 'Portfólio Gustavo Pinto',
+    name: 'Portfólio Pessoal',
     description:
-      'Portfólio pessoal desenvolvido para apresentar perfil profissional, competências, experiências e projetos em um layout escuro com identidade visual neon.',
-    stack: ['React', 'TypeScript', 'Vite', 'CSS3', 'HTML5'],
+      'Portfólio pessoal desenvolvido para apresentar perfil profissional, competências, experiências e projetos',
+    stack: ['React', 'TypeScript', 'Vite', 'Tailwind CSS'],
     link: 'https://github.com/gustavopinto244/gustavopinto244.github.io',
     isLive: true,
     liveLink: 'https://gustavopinto244.github.io',
