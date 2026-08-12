@@ -2,7 +2,7 @@ import type { Profile } from '../types';
 
 export const profile: Profile = {
   name: 'Gustavo Pinto da Conceição',
-  role: 'Desenvolvedor Full-Stack em formação',
+  role: 'Desenvolvedor Back-end em formação',
   location: 'Niterói - RJ',
   phone: '(21) 99629-8278',
   githubUser: 'gustavopinto244',

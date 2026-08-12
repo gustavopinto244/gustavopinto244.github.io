@@ -1,16 +1,18 @@
 import { experiences } from '../../data';
 import { SectionHeader } from '../ui/SectionHeader';
-import { Briefcase, GraduationCap, Building2, GitCommitHorizontal } from 'lucide-react';
+import { GitCommitHorizontal } from 'lucide-react';
+import { getIcon } from '../ui/icons';
+import type { Experience as ExperienceItem } from '../../types';
 
-const getIcon = (role: string) => {
-  if (role.toLowerCase().includes('graduando')) return GraduationCap;
-  if (role.toLowerCase().includes('assessor')) return Building2;
-  return Briefcase;
+const iconByType: Record<ExperienceItem['type'], string> = {
+  education: 'GraduationCap',
+  work: 'Briefcase',
+  organization: 'Building2',
 };
 
 export function Experience() {
   return (
-    <section id="curriculo" className="pt-20">
+    <section id="experience" className="pt-20">
       <SectionHeader
         command="git log --experiencia"
         title="Experiência e formação"
@@ -24,7 +26,7 @@ export function Experience() {
 
       <div className="relative ml-2 border-l border-border pl-8 md:pl-10 space-y-10">
         {experiences.map((item, index) => {
-          const Icon = getIcon(item.role);
+          const Icon = getIcon(iconByType[item.type]);
           const isHead = index === 0;
 
           return (
@@ -49,7 +51,9 @@ export function Experience() {
               </p>
 
               <div className="flex items-center gap-3 mb-1.5">
-                <Icon className="w-4 h-4 shrink-0 text-text-muted transition-colors group-hover:text-primary" />
+                {Icon && (
+                  <Icon className="w-4 h-4 shrink-0 text-text-muted transition-colors group-hover:text-primary" />
+                )}
                 <h3 className="font-display text-xl md:text-2xl font-bold tracking-tight transition-colors group-hover:text-primary">
                   {item.role}
                 </h3>

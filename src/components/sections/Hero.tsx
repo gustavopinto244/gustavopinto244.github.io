@@ -12,7 +12,7 @@ const contactLines = [
 export function Hero() {
   return (
     <section
-      id="inicio"
+      id="home"
       className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center pt-16 md:pt-24 pb-20"
     >
       <div>
@@ -34,12 +34,12 @@ export function Hero() {
 
         <p className="text-sm md:text-base text-text-muted leading-relaxed mb-10 max-w-xl">
           Em busca de uma oportunidade de estágio na área de Tecnologia, contribuindo com
-          desenvolvimento de software, análise de dados, automação ou IA, enquanto evoluo
+          desenvolvimento de software, infraestrutura, segurança, análise de dados ou automação, enquanto evoluo
           tecnicamente e agrego valor à equipe.
         </p>
 
         <div className="flex flex-wrap items-center gap-4">
-          <Button href="#projetos">Ver projetos</Button>
+          <Button href="#projects">Ver projetos</Button>
           <Button href={`mailto:${profile.email}`} variant="secondary">
             Entrar em contato
           </Button>

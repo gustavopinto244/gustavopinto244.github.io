@@ -1,92 +1,72 @@
-# Gustavo Pinto Portfolio
+# Portfólio — Gustavo Pinto da Conceição
 
-Personal portfolio built with React, TypeScript, Vite, and Tailwind CSS. Dark "terminal/neon" design (branch `redesign/terminal-neon`) with a near-black palette, neon green/cyan accents, monospace typography, terminal-window cards, ASCII progress bars, and a git-log experience timeline.
+Desenvolvedor back-end em formação, cursando Sistemas de Informação na Universidade La Salle (RJ).
+Este repositório é o código-fonte do meu portfólio: um site em React + TypeScript onde reúno os
+projetos que construí, as tecnologias que uso e a trajetória que me trouxe até aqui.
 
-## Tech Stack
+**🔗 [gustavopinto.dev.br](https://gustavopinto.dev.br)** · Niterói — RJ ·
+[LinkedIn](https://www.linkedin.com/in/gustavo-pinto-da-conceicao/) ·
+[gustavopinto244@gmail.com](mailto:gustavopinto244@gmail.com)
 
-- React 19
-- TypeScript
-- Vite 7
-- Tailwind CSS 4
-- lucide-react
-- clsx
+> Disponível para estágio em tecnologia.
 
-## Features
+## Áreas de atuação
 
-- Hero section with `whoami` prompt, professional summary and calls to action
-- Terminal-window contact card with availability status
-- Interactive skills section with expandable rows and ASCII proficiency bars
-- Featured projects as terminal windows with descriptions, tech stacks, and repo links
-- Git-log style experience timeline with work history and education
-- Social links (GitHub, LinkedIn, email)
-- Fully responsive layout
-- Smooth anchor navigation
+Organizo meus projetos e minhas competências em três frentes:
 
-## Run Locally
+| Frente | O que envolve |
+|---|---|
+| **Desenvolvimento** | APIs REST, back-end e aplicações web construídas de ponta a ponta |
+| **Segurança e Infraestrutura** | servidores Linux, containers, deploy e a operação de um homelab próprio |
+| **Automação e Dados** | rotinas automatizadas, integrações e coleta de dados |
+
+## Projetos
+
+| Projeto | Descrição | Links |
+|---|---|---|
+| **Atlas** | Meu homelab: um mini PC de 8 GB que hospeda meus servidores, aplicações e APIs — onde tudo que construo entra no ar. | infraestrutura própria |
+| **Atlas Manager** | Aplicação que administra o Atlas pelo navegador: métricas da máquina, controle de serviços, agendamentos e backups. | [repositório](https://github.com/gustavopinto244/atlas-manager) |
+| **E-commerce Full-Stack** | Catálogo com filtros, carrinho persistente e checkout com validação de preços no servidor. | [repositório](https://github.com/gustavopinto244/store-cart-project) · [site](https://store-cart-project.vercel.app) |
+| **API de Lista de Tarefas** | API REST em MVC com registro, login, autenticação e persistência em MongoDB. | [repositório](https://github.com/gustavopinto244/task-list-project) · [site](https://task.gustavopinto.dev.br) |
+| **Portfólio Pessoal** | Este projeto. | [repositório](https://github.com/gustavopinto244/gustavopinto244.github.io) · [site](https://gustavopinto.dev.br) |
+
+## Sobre este projeto
+
+Site de duas páginas — a home com projetos e competências, e `/about/` com trajetória e currículos.
+
+**Stack:** React 19 · TypeScript · Vite 7 · Tailwind CSS 4 · lucide-react
+
+Algumas decisões que tomei aqui:
+
+- **Todo o conteúdo vive em `src/data/`**, tipado, separado dos componentes. Atualizar o portfólio é
+  editar um arquivo de dados, nunca mexer em JSX.
+- **Multi-página sem router.** Duas entradas HTML no build do Vite resolvem `/` e `/about/` com URLs
+  reais, sem adicionar dependência nem depender de fallback de SPA no GitHub Pages.
+- **Uma taxonomia única de áreas** (`src/data/areas.ts`) alimenta as abas de projetos, os filtros de
+  competências e os currículos — uma fonte da verdade, três consumidores.
+- **Sem dependências de UI.** Abas, filtros, grid de competências e o lightbox de mídia são
+  componentes próprios, com papéis ARIA e navegação por teclado.
+- **Deploy automático** para GitHub Pages a cada push na `main`.
+
+## Rodando localmente
 
 ```bash
 npm install
-npm run dev
+npm run dev      # http://localhost:5173
+npm run build    # gera dist/ com as duas páginas
 ```
 
-## Production Build
-
-```bash
-npm run build
-```
-
-## Preview the Build
-
-```bash
-npm run preview
-```
-
-## Project Structure
+## Estrutura
 
 ```
 src/
 ├── components/
-│   ├── ui/              # Reusable UI components (Button, Card, Badge, ProgressBar, SectionHeader)
-│   ├── sections/        # Page sections (Hero, Skills, SoftSkills, Projects, Experience)
-│   └── layout/          # Layout components (Navigation, Footer)
-├── data/
-│   ├── profile.ts        # Profile info (name, role, contact, social links)
-│   ├── skills.ts         # Technical skills with proficiency levels
-│   ├── softSkills.ts     # Behavioral skills
-│   ├── projects.ts       # Featured projects
-│   ├── experiences.ts    # Work and education timeline
-│   └── index.ts          # Re-exports
-├── types/
-│   └── index.ts         # TypeScript type definitions
-├── App.tsx              # Root component
-├── main.tsx             # Entry point
-└── index.css            # Tailwind imports and theme config
+│   ├── ui/        # Button, Badge, Card, SectionHeader, AreaSelector, MediaGallery
+│   ├── sections/  # Hero, Projects, Skills, SoftSkills, About, Experience, Resumes
+│   └── layout/    # Navigation, Footer
+├── data/          # todo o conteúdo do site
+├── types/         # definições TypeScript
+└── index.css      # tema e tokens do Tailwind
 ```
 
-## Editing Content
-
-All data is centralized in `src/data/`:
-
-- `profile`: name, role, contact details, location, and social links
-- `skills`: skill cards with name, icon, proficiency level, and description
-- `projects`: project list with description, tech stack, and repo link
-- `experiences`: work experience and education timeline
-
-To add a new skill, append an object to the `skills` array following the existing pattern. The `icon` field must match a key in the `iconMap` defined in `src/components/sections/Skills.tsx`.
-
-## Design Tokens
-
-Colors and fonts are defined as Tailwind theme variables in `src/index.css`:
-
-| Token | Value | Usage |
-|-------|-------|-------|
-| `background` | `#07090d` | Near-black page background |
-| `surface` | `#0d1117` | Cards and panels |
-| `surface-hover` | `#161d29` | Hover state on rows and cards |
-| `border` | `#232c3d` | Borders and dividers |
-| `primary` | `#00ff88` | Neon terminal green |
-| `accent` | `#22d3ee` | Cyan accent |
-| `text` | `#e6edf3` | Primary text |
-| `text-muted` | `#8b98ab` | Secondary text |
-| `font-display` | Space Grotesk | Headlines |
-| `font-sans` | JetBrains Mono | Body and UI text |
+Instruções de manutenção do conteúdo estão em [MAINTENANCE.md](MAINTENANCE.md).

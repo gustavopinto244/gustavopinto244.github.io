@@ -1,3 +1,13 @@
+export type AreaId = 'development' | 'security-infra' | 'automation-data';
+
+export type Area = {
+  id: AreaId;
+  label: string;
+  title: string;
+  icon: string;
+  description: string;
+};
+
 export type SkillCategory = 'languages' | 'techniques' | 'tools';
 
 export type Skill = {
@@ -5,8 +15,8 @@ export type Skill = {
   name: string;
   icon: string;
   category: SkillCategory;
-  level: 'iniciante' | 'intermediario' | 'avancado';
-  proficiency: number;
+  areas: AreaId[];
+  usage: 'projects' | 'studying';
   description: string;
   examples: string[];
 };
@@ -19,21 +29,42 @@ export type SoftSkill = {
   context: string;
 };
 
+export type ProjectMedia = {
+  type: 'image' | 'video';
+  src: string;
+  caption?: string;
+  poster?: string;
+};
+
+export type ProjectStatus = 'Publicado' | 'Self-hosted' | 'Planejado';
+
 export type Project = {
   name: string;
   description: string;
   stack: string[];
-  link: string;
+  areas: AreaId[];
+  link?: string;
   liveLink?: string;
   isLive?: boolean;
-  status: string;
+  status: ProjectStatus;
+  media?: ProjectMedia[];
+  highlights?: string[];
+  note?: string;
 };
 
 export type Experience = {
+  /** Drives the timeline icon — never inferred from the role text. */
+  type: 'education' | 'work' | 'organization';
   role: string;
   company: string;
   period: string;
   summary: string;
+};
+
+export type Resume = {
+  area: AreaId;
+  file?: string;
+  updatedAt: string;
 };
 
 export type Profile = {
@@ -45,4 +76,12 @@ export type Profile = {
   github: string;
   linkedin: string;
   email: string;
+};
+
+export type About = {
+  headline: string;
+  paragraphs: string[];
+  photo?: string;
+  photoAlt?: string;
+  facts: { label: string; value: string }[];
 };

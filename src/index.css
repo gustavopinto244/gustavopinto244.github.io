@@ -57,3 +57,13 @@ body::after {
   background-color: var(--color-primary);
   color: #04120b;
 }
+
+/* Horizontal strips (tabs, filters, mobile menu) scroll without painting a scrollbar. */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

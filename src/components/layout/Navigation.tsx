@@ -1,20 +1,36 @@
 import { profile } from '../../data';
 import { Terminal } from 'lucide-react';
 
-const navLinks = [
-  { href: '#sobre', label: 'skills' },
-  { href: '#soft-skills', label: 'soft-skills' },
-  { href: '#projetos', label: 'projetos' },
-  { href: '#curriculo', label: 'curriculo' },
-];
+type NavigationProps = {
+  /** Decides which links are local anchors and which point to the other page. */
+  page?: 'home' | 'about';
+};
 
-export function Navigation() {
+const linksByPage = {
+  home: [
+    { href: '#projects', label: 'projetos' },
+    { href: '#skills', label: 'skills' },
+    { href: '#soft-skills', label: 'soft-skills' },
+    { href: '/about/', label: 'sobre' },
+  ],
+  about: [
+    { href: '/#projects', label: 'projetos' },
+    { href: '/#skills', label: 'skills' },
+    { href: '#experience', label: 'trajetoria' },
+    { href: '#resumes', label: 'curriculos' },
+  ],
+};
+
+export function Navigation({ page = 'home' }: NavigationProps) {
+  const navLinks = linksByPage[page];
+  const homeHref = page === 'home' ? '#home' : '/';
+
   return (
     <header className="sticky top-0 z-50 -mx-5 md:-mx-10 border-b border-border bg-background/85 backdrop-blur-md">
       <div className="px-5 md:px-10">
         <nav className="flex items-center justify-between gap-4 h-16">
           <a
-            href="#inicio"
+            href={homeHref}
             className="group inline-flex items-center gap-2.5 text-sm font-bold shrink-0"
             aria-label="Voltar ao início"
           >
@@ -49,7 +65,7 @@ export function Navigation() {
           </a>
         </nav>
 
-        <div className="md:hidden flex items-center gap-1 overflow-x-auto pb-3 text-xs">
+        <div className="no-scrollbar md:hidden flex items-center gap-1 overflow-x-auto pb-3 text-xs">
           {navLinks.map((link) => (
             <a
               key={link.href}
