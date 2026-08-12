@@ -16,11 +16,7 @@ export function About() {
         command="cat ~/sobre.md"
         title="Sobre mim"
         description={about.headline}
-        meta={
-          <p className="text-sm text-text-muted">
-            {profile.role}
-          </p>
-        }
+        meta={<p className="text-sm text-text-muted">{profile.role}</p>}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-14 items-start">

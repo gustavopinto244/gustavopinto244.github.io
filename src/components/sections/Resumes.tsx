@@ -63,11 +63,7 @@ export function Resumes() {
                   {Icon && <Icon className="w-4 h-4" strokeWidth={1.75} />}
                 </span>
 
-                {isAvailable ? (
-                  <Badge variant="primary">pdf</Badge>
-                ) : (
-                  <Badge>em breve</Badge>
-                )}
+                {isAvailable ? <Badge variant="primary">pdf</Badge> : <Badge>em breve</Badge>}
               </div>
 
               <h3

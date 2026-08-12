@@ -82,9 +82,7 @@ export function AreaSelector({
             onKeyDown={(event) => handleKeyDown(event, index)}
             className={clsx(
               'group shrink-0 inline-flex items-center gap-2 whitespace-nowrap text-xs transition-colors',
-              isTabs
-                ? 'px-3.5 py-3 border-b-2 -mb-px'
-                : 'rounded-lg border px-3 py-2',
+              isTabs ? 'px-3.5 py-3 border-b-2 -mb-px' : 'rounded-lg border px-3 py-2',
               isTabs && isActive && 'border-primary text-primary',
               isTabs && !isActive && 'border-transparent text-text-muted hover:text-text',
               !isTabs && isActive && 'border-primary/60 bg-primary/10 text-primary',
@@ -94,7 +92,9 @@ export function AreaSelector({
             )}
           >
             <span>
-              <span className={clsx('transition-colors', isActive ? 'text-primary' : 'text-primary/50')}>
+              <span
+                className={clsx('transition-colors', isActive ? 'text-primary' : 'text-primary/50')}
+              >
                 ./
               </span>
               {option.label}

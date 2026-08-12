@@ -38,17 +38,14 @@ export function Skills() {
     })),
   ];
 
-  const visible =
-    filter === ALL ? skills : skills.filter((skill) => skill.areas.includes(filter));
+  const visible = filter === ALL ? skills : skills.filter((skill) => skill.areas.includes(filter));
 
   const changeFilter = (id: string) => {
     setFilter(id as AreaId | typeof ALL);
     setExpandedId(null);
   };
 
-  const expandedIndex = expandedId
-    ? visible.findIndex((skill) => skill.id === expandedId)
-    : -1;
+  const expandedIndex = expandedId ? visible.findIndex((skill) => skill.id === expandedId) : -1;
   const expanded = expandedIndex >= 0 ? visible[expandedIndex] : null;
 
   // Last tile of the row holding the selected one - the panel goes right after it.

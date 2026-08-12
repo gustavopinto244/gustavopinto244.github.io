@@ -18,8 +18,8 @@ export function Footer() {
           Vamos construir algo juntos?
         </h2>
         <p className="text-text-muted max-w-xl mx-auto mb-8 leading-relaxed">
-          Estou em busca de uma oportunidade de estágio em tecnologia. Se você tem uma vaga,
-          um projeto ou apenas quer trocar uma ideia, me chama.
+          Estou em busca de uma oportunidade de estágio em tecnologia. Se você tem uma vaga, um
+          projeto ou apenas quer trocar uma ideia, me chama.
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-3">

@@ -16,7 +16,6 @@ export const about: About = {
   photo: '/photo.png',
   photoAlt: 'Gustavo Pinto da Conceição',
 
-
   facts: [
     { label: 'formação', value: 'Sistemas de Informação - Universidade La Salle RJ' },
     { label: 'período', value: '2º período' },

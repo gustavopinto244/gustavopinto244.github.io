@@ -17,19 +17,14 @@ export function SoftSkills() {
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const columns = useColumnCount(COLUMN_STEPS);
 
-  const expandedIndex = expandedId
-    ? softSkills.findIndex((skill) => skill.id === expandedId)
-    : -1;
+  const expandedIndex = expandedId ? softSkills.findIndex((skill) => skill.id === expandedId) : -1;
   const expanded = expandedIndex >= 0 ? softSkills[expandedIndex] : null;
 
   // Last card of the row holding the selected one - the panel goes right after it.
   const panelAfterIndex =
     expandedIndex < 0
       ? -1
-      : Math.min(
-          Math.floor(expandedIndex / columns) * columns + columns,
-          softSkills.length
-        ) - 1;
+      : Math.min(Math.floor(expandedIndex / columns) * columns + columns, softSkills.length) - 1;
 
   return (
     <section id="soft-skills" className="pt-20" aria-label="Soft Skills">

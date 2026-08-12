@@ -14,21 +14,21 @@ projetos que construí, as tecnologias que uso e a trajetória que me trouxe at�
 
 Organizo meus projetos e minhas competências em três frentes:
 
-| Frente | O que envolve |
-|---|---|
-| **Desenvolvimento** | APIs REST, back-end e aplicações web construídas de ponta a ponta |
+| Frente                         | O que envolve                                                           |
+| ------------------------------ | ----------------------------------------------------------------------- |
+| **Desenvolvimento**            | APIs REST, back-end e aplicações web construídas de ponta a ponta       |
 | **Segurança e Infraestrutura** | servidores Linux, containers, deploy e a operação de um homelab próprio |
-| **Automação e Dados** | rotinas automatizadas, integrações e coleta de dados |
+| **Automação e Dados**          | rotinas automatizadas, integrações e coleta de dados                    |
 
 ## Projetos
 
-| Projeto | Descrição | Links |
-|---|---|---|
-| **Atlas** | Meu homelab: um mini PC de 8 GB que hospeda meus servidores, aplicações e APIs — onde tudo que construo entra no ar. | infraestrutura própria |
-| **Atlas Manager** | Aplicação que administra o Atlas pelo navegador: métricas da máquina, controle de serviços, agendamentos e backups. | [repositório](https://github.com/gustavopinto244/atlas-manager) |
-| **E-commerce Full-Stack** | Catálogo com filtros, carrinho persistente e checkout com validação de preços no servidor. | [repositório](https://github.com/gustavopinto244/store-cart-project) · [site](https://store-cart-project.vercel.app) |
-| **API de Lista de Tarefas** | API REST em MVC com registro, login, autenticação e persistência em MongoDB. | [repositório](https://github.com/gustavopinto244/task-list-project) · [site](https://task.gustavopinto.dev.br) |
-| **Portfólio Pessoal** | Este projeto. | [repositório](https://github.com/gustavopinto244/gustavopinto244.github.io) · [site](https://gustavopinto.dev.br) |
+| Projeto                     | Descrição                                                                                                            | Links                                                                                                                |
+| --------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| **Atlas**                   | Meu homelab: um mini PC de 8 GB que hospeda meus servidores, aplicações e APIs — onde tudo que construo entra no ar. | infraestrutura própria                                                                                               |
+| **Atlas Manager**           | Aplicação que administra o Atlas pelo navegador: métricas da máquina, controle de serviços, agendamentos e backups.  | [repositório](https://github.com/gustavopinto244/atlas-manager)                                                      |
+| **E-commerce Full-Stack**   | Catálogo com filtros, carrinho persistente e checkout com validação de preços no servidor.                           | [repositório](https://github.com/gustavopinto244/store-cart-project) · [site](https://store-cart-project.vercel.app) |
+| **API de Lista de Tarefas** | API REST em MVC com registro, login, autenticação e persistência em MongoDB.                                         | [repositório](https://github.com/gustavopinto244/task-list-project) · [site](https://task.gustavopinto.dev.br)       |
+| **Portfólio Pessoal**       | Este projeto.                                                                                                        | [repositório](https://github.com/gustavopinto244/gustavopinto244.github.io) · [site](https://gustavopinto.dev.br)    |
 
 ## Sobre este projeto
 

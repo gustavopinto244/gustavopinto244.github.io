@@ -58,7 +58,7 @@ Things that matter:
 media: [
   { type: 'image', src: '/media/atlas-dashboard.png', caption: 'Painel de métricas' },
   { type: 'video', src: '/media/atlas-demo.mp4', poster: '/media/atlas-demo-capa.png' },
-]
+];
 ```
 
 The first item becomes the card cover; the rest show up as thumbnails. Clicking opens the lightbox
@@ -174,18 +174,18 @@ files.
 
 Defined as Tailwind theme variables in `src/index.css`:
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `background` | `#07090d` | page background |
-| `surface` | `#0d1117` | cards and panels |
-| `surface-hover` | `#161d29` | row and card hover |
-| `border` | `#232c3d` | borders and dividers |
-| `primary` | `#00ff88` | neon terminal green |
-| `accent` | `#22d3ee` | cyan accent |
-| `text` | `#e6edf3` | primary text |
-| `text-muted` | `#8b98ab` | secondary text |
-| `font-display` | Space Grotesk | headlines |
-| `font-sans` | JetBrains Mono | body and UI |
+| Token           | Value          | Usage                |
+| --------------- | -------------- | -------------------- |
+| `background`    | `#07090d`      | page background      |
+| `surface`       | `#0d1117`      | cards and panels     |
+| `surface-hover` | `#161d29`      | row and card hover   |
+| `border`        | `#232c3d`      | borders and dividers |
+| `primary`       | `#00ff88`      | neon terminal green  |
+| `accent`        | `#22d3ee`      | cyan accent          |
+| `text`          | `#e6edf3`      | primary text         |
+| `text-muted`    | `#8b98ab`      | secondary text       |
+| `font-display`  | Space Grotesk  | headlines            |
+| `font-sans`     | JetBrains Mono | body and UI          |
 
 ## Checks before pushing
 

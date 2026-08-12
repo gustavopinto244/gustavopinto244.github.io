@@ -174,7 +174,8 @@ export function Projects() {
 
                     {isPlanned && (
                       <p className="text-xs text-text-muted">
-                        <span className="text-primary">$</span> em planejamento - repositório em breve
+                        <span className="text-primary">$</span> em planejamento - repositório em
+                        breve
                       </p>
                     )}
 

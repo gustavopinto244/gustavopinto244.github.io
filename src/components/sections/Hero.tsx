@@ -34,8 +34,8 @@ export function Hero() {
 
         <p className="text-sm md:text-base text-text-muted leading-relaxed mb-10 max-w-xl">
           Em busca de uma oportunidade de estágio na área de Tecnologia, contribuindo com
-          desenvolvimento de software, infraestrutura, segurança, análise de dados ou automação, enquanto evoluo
-          tecnicamente e agrego valor à equipe.
+          desenvolvimento de software, infraestrutura, segurança, análise de dados ou automação,
+          enquanto evoluo tecnicamente e agrego valor à equipe.
         </p>
 
         <div className="flex flex-wrap items-center gap-4">
@@ -56,8 +56,8 @@ export function Hero() {
 
         <div className="p-5 md:p-6 text-sm">
           <p className="mb-5">
-            <span className="text-text-muted">$</span>{' '}
-            <span className="text-accent">cat</span> contato.txt
+            <span className="text-text-muted">$</span> <span className="text-accent">cat</span>{' '}
+            contato.txt
           </p>
 
           <ul className="space-y-3.5 mb-6">

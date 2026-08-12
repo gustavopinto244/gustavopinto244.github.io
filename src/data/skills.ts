@@ -8,7 +8,8 @@ export const skills: Skill[] = [
     category: 'languages',
     areas: ['development', 'automation-data'],
     usage: 'projects',
-    description: 'Construção de APIs REST, middlewares, autenticação e integração com bancos de dados.',
+    description:
+      'Construção de APIs REST, middlewares, autenticação e integração com bancos de dados.',
     examples: ['API de Lista de Tarefas', 'E-commerce Back-end'],
   },
   {
@@ -28,7 +29,8 @@ export const skills: Skill[] = [
     category: 'languages',
     areas: ['development'],
     usage: 'projects',
-    description: 'Componentes funcionais, hooks, gerenciamento de estado e renderização condicional.',
+    description:
+      'Componentes funcionais, hooks, gerenciamento de estado e renderização condicional.',
     examples: ['Portfólio Pessoal', 'E-commerce Front-end'],
   },
   {
@@ -38,7 +40,8 @@ export const skills: Skill[] = [
     category: 'languages',
     areas: ['development', 'automation-data'],
     usage: 'projects',
-    description: 'Framework para construção de APIs REST, roteamento, middlewares e tratamento de erros.',
+    description:
+      'Framework para construção de APIs REST, roteamento, middlewares e tratamento de erros.',
     examples: ['API de Lista de Tarefas', 'E-commerce Back-end'],
   },
   {
@@ -58,7 +61,8 @@ export const skills: Skill[] = [
     category: 'languages',
     areas: ['development'],
     usage: 'projects',
-    description: 'Linguagem de programação orientada a objetos, com foco em produtividade e desempenho.',
+    description:
+      'Linguagem de programação orientada a objetos, com foco em produtividade e desempenho.',
     examples: ['Projetos acadêmicos'],
   },
   {
@@ -88,7 +92,8 @@ export const skills: Skill[] = [
     category: 'techniques',
     areas: ['development'],
     usage: 'studying',
-    description: 'Princípios de design orientado a objetos para código mais manutenível e flexível.',
+    description:
+      'Princípios de design orientado a objetos para código mais manutenível e flexível.',
     examples: ['Estudo teórico'],
   },
   {
@@ -148,7 +153,8 @@ export const skills: Skill[] = [
     category: 'tools',
     areas: ['security-infra', 'automation-data'],
     usage: 'projects',
-    description: 'Comandos básicos, navegação em diretórios, permissões e gerenciamento de processos.',
+    description:
+      'Comandos básicos, navegação em diretórios, permissões e gerenciamento de processos.',
     examples: ['Atlas Manager', 'Ambiente de desenvolvimento local'],
   },
   {
@@ -158,7 +164,8 @@ export const skills: Skill[] = [
     category: 'tools',
     areas: ['development', 'automation-data'],
     usage: 'projects',
-    description: 'Testes de APIs REST, envio de requisições, visualização de respostas e organização de endpoints.',
+    description:
+      'Testes de APIs REST, envio de requisições, visualização de respostas e organização de endpoints.',
     examples: ['Testes de APIs desenvolvidas'],
   },
 ];
