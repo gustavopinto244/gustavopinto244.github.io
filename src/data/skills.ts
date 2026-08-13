@@ -9,8 +9,8 @@ export const skills: Skill[] = [
     areas: ['development', 'automation-data'],
     usage: 'projects',
     description:
-      'Construção de APIs REST, middlewares, autenticação e integração com bancos de dados.',
-    examples: ['API de Lista de Tarefas', 'E-commerce Back-end'],
+      'Experiência prática com Node.js na criação de APIs, serviços e aplicações back-end.',
+    examples: ['Atlas Manager', 'API de Lista de Tarefas', 'E-commerce Back-end'],
   },
   {
     id: 'typescript',
@@ -19,8 +19,20 @@ export const skills: Skill[] = [
     category: 'languages',
     areas: ['development', 'security-infra', 'automation-data'],
     usage: 'projects',
-    description: 'Tipagem estática, interfaces, generics e boas práticas de tipagem em projetos.',
-    examples: ['Todos os projetos atuais'],
+    description:
+      'Experiência prática com TypeScript para desenvolver aplicações web e serviços back-end tipados.',
+    examples: ['Atlas Manager', 'Portfólio Pessoal', 'E-commerce Full-Stack'],
+  },
+  {
+    id: 'javascript',
+    name: 'JavaScript',
+    icon: 'Code',
+    category: 'languages',
+    areas: ['development', 'automation-data'],
+    usage: 'projects',
+    description:
+      'Conhecimento prático em JavaScript para aplicações web, manipulação de dados e lógica no back-end.',
+    examples: ['API de Lista de Tarefas', 'Métodos Numéricos'],
   },
   {
     id: 'react',
@@ -30,7 +42,7 @@ export const skills: Skill[] = [
     areas: ['development'],
     usage: 'projects',
     description:
-      'Componentes funcionais, hooks, gerenciamento de estado e renderização condicional.',
+      'Conhecimento prático em React para criar interfaces com componentes, hooks e gerenciamento de estado.',
     examples: ['Portfólio Pessoal', 'E-commerce Front-end'],
   },
   {
@@ -41,7 +53,7 @@ export const skills: Skill[] = [
     areas: ['development', 'automation-data'],
     usage: 'projects',
     description:
-      'Framework para construção de APIs REST, roteamento, middlewares e tratamento de erros.',
+      'Conhecimento prático em Express.js para criar rotas, middlewares e APIs integradas a bancos de dados.',
     examples: ['API de Lista de Tarefas', 'E-commerce Back-end'],
   },
   {
@@ -51,28 +63,7 @@ export const skills: Skill[] = [
     category: 'languages',
     areas: ['automation-data'],
     usage: 'projects',
-    description: 'Linguagem de programação versátil, com foco em legibilidade e produtividade.',
-    examples: ['Projetos acadêmicos'],
-  },
-  {
-    id: 'c#',
-    name: 'C#',
-    icon: 'Code',
-    category: 'languages',
-    areas: ['development'],
-    usage: 'projects',
-    description:
-      'Linguagem de programação orientada a objetos, com foco em produtividade e desempenho.',
-    examples: ['Projetos acadêmicos'],
-  },
-  {
-    id: '.net8',
-    name: '.NET 8',
-    icon: 'Layers',
-    category: 'languages',
-    areas: ['development'],
-    usage: 'studying',
-    description: 'Framework para desenvolvimento de aplicações web, APIs e serviços com C#.',
+    description: 'Conhecimento básico em Python para automação e análise de dados.',
     examples: ['Projetos acadêmicos'],
   },
   {
@@ -82,7 +73,8 @@ export const skills: Skill[] = [
     category: 'techniques',
     areas: ['development', 'automation-data'],
     usage: 'projects',
-    description: 'Design de endpoints, métodos HTTP, status codes, autenticação e documentação.',
+    description:
+      'Conhecimento prático na criação e no consumo de APIs REST com autenticação e operações CRUD.',
     examples: ['API de Lista de Tarefas', 'E-commerce API'],
   },
   {
@@ -91,10 +83,10 @@ export const skills: Skill[] = [
     icon: 'Layers',
     category: 'techniques',
     areas: ['development'],
-    usage: 'studying',
+    usage: 'projects',
     description:
-      'Princípios de design orientado a objetos para código mais manutenível e flexível.',
-    examples: ['Estudo teórico'],
+      'Conhecimento básico dos princípios SOLID e de sua aplicação na separação de responsabilidades.',
+    examples: ['Atlas Manager'],
   },
   {
     id: 'patterns',
@@ -103,8 +95,20 @@ export const skills: Skill[] = [
     category: 'techniques',
     areas: ['development'],
     usage: 'studying',
-    description: 'Padrões como Factory, Singleton, Repository e suas aplicações em projetos reais.',
+    description:
+      'Conhecimento básico de padrões de projeto, com estudo de Factory, Singleton e Repository.',
     examples: ['Estudo teórico'],
+  },
+  {
+    id: 'automated-tests',
+    name: 'Testes Automatizados',
+    icon: 'ClipboardList',
+    category: 'techniques',
+    areas: ['development', 'security-infra'],
+    usage: 'projects',
+    description:
+      'Conhecimento prático na criação de testes automatizados para validar regras e serviços back-end.',
+    examples: ['Atlas Manager'],
   },
   {
     id: 'git',
@@ -113,7 +117,8 @@ export const skills: Skill[] = [
     category: 'tools',
     areas: ['development', 'security-infra', 'automation-data'],
     usage: 'projects',
-    description: 'Controle de versão, branches, merge, pull requests e workflows colaborativos.',
+    description:
+      'Conhecimento prático em controle de versão, branches, merges e publicação de projetos no GitHub.',
     examples: ['Todos os projetos'],
   },
   {
@@ -123,7 +128,8 @@ export const skills: Skill[] = [
     category: 'tools',
     areas: ['development', 'automation-data'],
     usage: 'projects',
-    description: 'Modelagem relacional, queries, joins, índices e integração com ORMs.',
+    description:
+      'Conhecimento prático em banco de dados relacional, consultas SQL e integração com aplicações.',
     examples: ['E-commerce Full-Stack'],
   },
   {
@@ -133,7 +139,8 @@ export const skills: Skill[] = [
     category: 'tools',
     areas: ['development'],
     usage: 'projects',
-    description: 'Modelagem NoSQL, operações CRUD, agregações e integração com Mongoose.',
+    description:
+      'Conhecimento prático em MongoDB para persistência de usuários, sessões e operações CRUD.',
     examples: ['API de Lista de Tarefas'],
   },
   {
@@ -143,7 +150,8 @@ export const skills: Skill[] = [
     category: 'tools',
     areas: ['security-infra', 'development'],
     usage: 'projects',
-    description: 'Containerização de aplicações, criação de imagens e gerenciamento de containers.',
+    description:
+      'Conhecimento prático em Docker para executar, configurar e gerenciar aplicações em containers.',
     examples: ['Atlas Manager', 'Deploy de projetos locais'],
   },
   {
@@ -154,7 +162,7 @@ export const skills: Skill[] = [
     areas: ['security-infra', 'automation-data'],
     usage: 'projects',
     description:
-      'Comandos básicos, navegação em diretórios, permissões e gerenciamento de processos.',
+      'Conhecimento prático em Linux para uso do terminal, permissões, processos e ambiente de desenvolvimento.',
     examples: ['Atlas Manager', 'Ambiente de desenvolvimento local'],
   },
   {
@@ -165,7 +173,95 @@ export const skills: Skill[] = [
     areas: ['development', 'automation-data'],
     usage: 'projects',
     description:
-      'Testes de APIs REST, envio de requisições, visualização de respostas e organização de endpoints.',
+      'Conhecimento prático em Insomnia para testar requisições, autenticação e respostas de APIs REST.',
     examples: ['Testes de APIs desenvolvidas'],
+  },
+  {
+    id: 'linux-server',
+    name: 'Linux Server',
+    icon: 'Server',
+    category: 'tools',
+    areas: ['security-infra'],
+    usage: 'projects',
+    description:
+      'Conhecimento prático na administração básica de servidor Linux, incluindo usuários, permissões e serviços.',
+    examples: ['Atlas - Homelab', 'Atlas Manager'],
+  },
+  {
+    id: 'nginx',
+    name: 'Nginx',
+    icon: 'Server',
+    category: 'tools',
+    areas: ['security-infra'],
+    usage: 'projects',
+    description:
+      'Conhecimento prático na configuração do Nginx como proxy reverso para serviços hospedados no homelab.',
+    examples: ['Atlas Manager', 'Atlas - Homelab'],
+  },
+  {
+    id: 'systemd',
+    name: 'systemd',
+    icon: 'Cog',
+    category: 'tools',
+    areas: ['security-infra'],
+    usage: 'projects',
+    description:
+      'Conhecimento prático na criação e no gerenciamento de serviços iniciados pelo sistema.',
+    examples: ['Atlas Manager'],
+  },
+  {
+    id: 'ssh',
+    name: 'SSH',
+    icon: 'Terminal',
+    category: 'tools',
+    areas: ['security-infra'],
+    usage: 'projects',
+    description:
+      'Conhecimento prático em SSH para acesso remoto e administração segura do servidor do homelab.',
+    examples: ['Atlas - Homelab', 'Atlas Manager'],
+  },
+  {
+    id: 'http-https',
+    name: 'HTTP/HTTPS',
+    icon: 'Globe',
+    category: 'tools',
+    areas: ['security-infra'],
+    usage: 'projects',
+    description:
+      'Conhecimento básico dos protocolos HTTP e HTTPS, incluindo métodos, cabeçalhos e uso de certificados TLS.',
+    examples: ['Todos os projetos com deploy'],
+  },
+  {
+    id: 'dns',
+    name: 'DNS',
+    icon: 'Globe',
+    category: 'tools',
+    areas: ['security-infra'],
+    usage: 'projects',
+    description:
+      'Conhecimento básico na configuração de DNS e no direcionamento de subdomínios para aplicações publicadas.',
+    examples: ['Atlas Manager', 'Portfólio Pessoal'],
+  },
+  {
+    id: 'cloudflare',
+    name: 'Cloudflare',
+    icon: 'Cloud',
+    category: 'tools',
+    areas: ['security-infra'],
+    usage: 'projects',
+    description:
+      'Conhecimento prático em Cloudflare para gerenciar DNS, Tunnel e controle de acesso a serviços do homelab.',
+    examples: ['Atlas Manager', 'Atlas - Homelab'],
+  },
+  {
+    id: 'web-security',
+    name: 'Segurança Web',
+    icon: 'ShieldCheck',
+    category: 'tools',
+    areas: ['security-infra'],
+    usage: 'projects',
+    description:
+      'Conhecimento básico em segurança web, com autenticação, controle de acesso e configuração segura de serviços.',
+    examples: ['Atlas Manager', 'API de Lista de Tarefas'],
   },
 ];

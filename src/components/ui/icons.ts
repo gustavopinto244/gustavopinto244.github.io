@@ -3,7 +3,9 @@ import {
   Briefcase,
   Building2,
   ClipboardList,
+  Cloud,
   Code,
+  Cog,
   Database,
   Eye,
   GitBranch,
@@ -25,19 +27,14 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 
-/**
- * Every icon referenced by an `icon` field in `src/data/`.
- *
- * Data files name icons as strings so content stays free of imports; this is the
- * single place that resolves those names. To use a new icon, import it from
- * `lucide-react` and add it here.
- */
 export const icons: Record<string, LucideIcon> = {
   Box,
   Briefcase,
   Building2,
   ClipboardList,
+  Cloud,
   Code,
+  Cog,
   Database,
   Eye,
   GitBranch,
