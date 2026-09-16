@@ -1,90 +1,115 @@
+import { useLanguage } from '../../i18n/context';
+import {
+  ArrowDown,
+  ArrowUpRight,
+  Braces,
+  Database,
+  GitBranch,
+  MapPin,
+  Server,
+  Terminal,
+} from 'lucide-react';
 import { profile } from '../../data';
-import { Button } from '../ui/Button';
-import { MapPin, Phone, Mail, GitBranch } from 'lucide-react';
-
-const contactLines = [
-  { icon: MapPin, label: 'local', value: profile.location },
-  { icon: Phone, label: 'telefone', value: profile.phone },
-  { icon: Mail, label: 'email', value: profile.email },
-  { icon: GitBranch, label: 'github', value: `@${profile.githubUser}` },
-];
+import { EnglishHighlight } from '../ui/EnglishHighlight';
 
 export function Hero() {
+  const { t } = useLanguage();
   return (
-    <section
-      id="home"
-      className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center pt-16 md:pt-24 pb-20"
-    >
-      <div>
-        <p className="text-sm md:text-base mb-6">
-          <span className="text-text-muted">gustavo@dev:~$</span>{' '}
-          <span className="text-primary">whoami</span>
-        </p>
-
-        <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.02] tracking-tight mb-6">
-          Gustavo
-          <span className="block text-primary [text-shadow:0_0_36px_var(--color-primary)]">
-            Pinto
-          </span>
+    <section id="home" className="hero">
+      <div className="hero-copy">
+        <span className="availability">
+          <span className="status-dot" />
+          {t('Disponível para estágio')}{' '}
+        </span>
+        <p className="hero-intro">{t('OLÁ, EU SOU')}</p>
+        <h1>
+          {'Gustavo'} <br />
+          {'Pinto'}
+          <span className="text-primary">.</span>
         </h1>
-
-        <p className="text-base md:text-lg text-accent mb-5">
-          <span className="text-text-muted">&gt;</span> {profile.role}
+        <p className="hero-role">
+          {t('Desenvolvedor')} <span>{t('back-end em formação.')}</span>
         </p>
-
-        <p className="text-sm md:text-base text-text-muted leading-relaxed mb-10 max-w-xl">
-          Em busca de uma oportunidade de estágio na área de Tecnologia, contribuindo com
-          desenvolvimento de software, infraestrutura, segurança, análise de dados ou automação,
-          enquanto evoluo tecnicamente e agrego valor à equipe.
+        <p className="hero-description">
+          {t(
+            'Transformo aprendizado em aplicações reais. Construo APIs, conecto dados e coloco projetos no ar no meu próprio servidor.'
+          )}{' '}
         </p>
-
-        <div className="flex flex-wrap items-center gap-4">
-          <Button href="#projects">Ver projetos</Button>
-          <Button href={`mailto:${profile.email}`} variant="secondary">
-            Entrar em contato
-          </Button>
+        <EnglishHighlight />
+        <div className="hero-actions">
+          <a href="#projects" className="action action-primary">
+            {t('Conheça meus projetos')} <ArrowDown size={17} />
+          </a>
+          <a href="#resumes" className="action action-secondary">
+            {t('Ver currículos')} <ArrowUpRight size={17} />
+          </a>
+        </div>
+        <div className="hero-location">
+          <MapPin size={14} /> {profile.location}
+          <span className="small-divider" />
+          {t('Remoto, híbrido ou presencial')}{' '}
         </div>
       </div>
-
-      <aside className="rounded-xl border border-border bg-surface overflow-hidden shadow-[0_0_60px_-20px_var(--color-primary)]">
-        <div className="flex items-center gap-2 border-b border-border bg-background/60 px-4 py-3">
-          <span className="w-3 h-3 rounded-full bg-[#ff5f57]" />
-          <span className="w-3 h-3 rounded-full bg-[#febc2e]" />
-          <span className="w-3 h-3 rounded-full bg-[#28c840]" />
-          <span className="ml-2 text-xs text-text-muted">~/contato.sh</span>
+      <div
+        className="hero-visual"
+        aria-label={t('Foco de aprendizado: back-end, dados e infraestrutura')}
+      >
+        <div className="visual-topline">
+          <span className="eyebrow">{t('APRENDER. CONSTRUIR. PUBLICAR.')}</span>
+          <span className="visual-cross">+</span>
         </div>
-
-        <div className="p-5 md:p-6 text-sm">
-          <p className="mb-5">
-            <span className="text-text-muted">$</span> <span className="text-accent">cat</span>{' '}
-            contato.txt
-          </p>
-
-          <ul className="space-y-3.5 mb-6">
-            {contactLines.map(({ icon: Icon, label, value }) => (
-              <li key={label} className="flex items-center gap-3">
-                <Icon className="w-4 h-4 shrink-0 text-primary" />
-                <span className="text-text-muted w-20 shrink-0">{label}:</span>
-                <span className="break-all">{value}</span>
-              </li>
-            ))}
-          </ul>
-
-          <p className="flex items-center gap-2 border-t border-border pt-4">
-            <span className="text-text-muted">$</span>
-            <span className="text-primary">status</span>
-            <span className="inline-flex items-center gap-1.5 text-accent">
-              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              aberto_para_estagio
-            </span>
-          </p>
-
-          <p className="mt-3">
-            <span className="text-text-muted">$</span>
-            <span className="inline-block w-2 h-4 ml-1.5 translate-y-0.5 bg-primary animate-blink" />
+        <div className="architecture">
+          <span className="orbit orbit-one" />
+          <span className="orbit orbit-two" />
+          <span className="architecture-label label-api">&lt; API /&gt;</span>
+          <span className="architecture-label label-data">{t('{ dados }')}</span>
+          <div className="architecture-core">
+            <Server size={47} strokeWidth={1.3} />
+            <span>{'ATLAS'}</span>
+            <small>{t('meu homelab')}</small>
+          </div>
+          <div className="satellite satellite-code">
+            <Braces size={23} />
+          </div>
+          <div className="satellite satellite-data">
+            <Database size={22} />
+          </div>
+          <div className="satellite satellite-git">
+            <GitBranch size={21} />
+          </div>
+          <span className="architecture-label label-deploy">{'deploy ↗'}</span>
+        </div>
+        <div className="visual-terminal">
+          <div>
+            <Terminal size={14} />
+            <span>{t('da primeira rota ao servidor')}</span>
+            <span className="text-primary">↗</span>
+          </div>
+          <p>
+            <span>const</span> {t('jornada = [')}
+            <br />
+            <span className="code-indent">{t("'back-end', 'dados', 'infra'")}</span>
+            <br />
+            ];
+            <span className="terminal-cursor" />
           </p>
         </div>
-      </aside>
+        <div className="visual-bottom">
+          <span className="status-dot" />
+          <span>{t('Projetos próprios. Aprendizado na prática.')}</span>
+        </div>
+      </div>
+      <div className="hero-foot">
+        <span>{t('DO CÓDIGO À INFRAESTRUTURA')}</span>
+        <div>
+          {['TypeScript', 'Node.js', 'PostgreSQL', 'Docker', 'Linux'].map((name) => (
+            <span key={name}>{name}</span>
+          ))}
+        </div>
+        <a href="#projects" aria-label={t('Ir para projetos')}>
+          <ArrowDown size={18} />
+        </a>
+      </div>
     </section>
   );
 }

@@ -1,51 +1,61 @@
-import { ArrowUpRight, FileText } from 'lucide-react';
+import { useLanguage } from '../../i18n/context';
+import { ArrowUpRight, GraduationCap, MapPin, Clock } from 'lucide-react';
 import { about } from '../../data';
 
 export function AboutTeaser() {
+  const { t, language } = useLanguage();
   return (
-    <section id="about" className="pt-20">
-      <div className="rounded-xl border border-border bg-surface overflow-hidden">
-        <div className="flex items-center gap-2 border-b border-border bg-background/60 px-4 py-2.5">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
-          <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
-          <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
-          <span className="ml-2 text-xs text-text-muted">~/sobre.md</span>
+    <section id="about" className="content-section about-teaser">
+      <div className="portrait-wrap">
+        <img src={about.photo} alt={about.photoAlt} width="678" height="678" loading="lazy" />
+        <div className="portrait-caption">
+          <span>{'Gustavo Pinto'}</span>
+          <span>{t('Niterói, RJ ↗')}</span>
         </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-8 items-center p-6 md:p-10">
+        <span className="portrait-corner" />
+      </div>
+      <div className="about-copy">
+        <p className="eyebrow">{t('03 / ALÉM DO CÓDIGO')}</p>
+        <h2>
+          {t('Curiosidade para aprender.')} <br />
+          <span className="muted-heading">{t('Cuidado para construir.')}</span>
+        </h2>
+        <p>
+          {t(
+            'Antes da tecnologia, trabalhei com controle de qualidade na produção de laticínios. Trouxe dessa experiência o cuidado com processos, a documentação e a responsabilidade pelo que entrego.'
+          )}{' '}
+        </p>
+        <p>
+          {t(
+            'Hoje curso Sistemas de Informação e aprendo construindo: desenvolvo aplicações, mantenho meu homelab e investigo o que acontece depois do deploy. Busco meu primeiro estágio em tecnologia para evoluir com uma equipe e contribuir de verdade.'
+          )}{' '}
+        </p>
+        <div className="about-facts">
           <div>
-            <p className="text-sm text-primary mb-4">
-              <span className="text-text-muted">gustavo@dev:~$</span> head -n 1 sobre.md
-            </p>
-
-            <h2 className="font-display text-2xl md:text-4xl font-bold tracking-tight mb-4 max-w-2xl">
-              {about.headline}
-            </h2>
-
-            <p className="text-sm text-text-muted leading-relaxed max-w-2xl">
-              Trajetória completa, o que estou construindo hoje e os currículos por área de atuação.
-            </p>
+            <GraduationCap size={19} />
+            <span>
+              <strong>{t('Sistemas de Informação')}</strong>
+              {t('Universidade La Salle · conclusão em dez. 2029')}{' '}
+            </span>
           </div>
-
-          <div className="flex flex-wrap gap-3 lg:justify-end">
-            <a
-              href="/about/"
-              className="group inline-flex items-center gap-2 rounded-lg border border-border bg-background px-4 py-2.5 text-xs font-semibold transition-colors hover:border-primary/60 hover:text-primary"
-            >
-              ler mais
-              <ArrowUpRight className="w-3.5 h-3.5 text-text-muted transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
-            </a>
-
-            <a
-              href="/about/#resumes"
-              className="group inline-flex items-center gap-2 rounded-lg border border-border bg-background px-4 py-2.5 text-xs font-semibold transition-colors hover:border-accent/60 hover:text-accent"
-            >
-              <FileText className="w-4 h-4" />
-              currículos
-              <ArrowUpRight className="w-3.5 h-3.5 text-text-muted transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent" />
-            </a>
+          <div>
+            <Clock size={18} />
+            <span>
+              <strong>{t('Disponibilidade de 6 horas por dia')}</strong>
+              {t('Entre 6h e 17h')}{' '}
+            </span>
+          </div>
+          <div>
+            <MapPin size={18} />
+            <span>
+              <strong>{t('Niterói, Rio de Janeiro')}</strong>
+              {t('Remoto, híbrido ou presencial')}{' '}
+            </span>
           </div>
         </div>
+        <a className="text-link" href={`/about/?lang=${language}`}>
+          {t('Conheça minha trajetória')} <ArrowUpRight size={17} />
+        </a>
       </div>
     </section>
   );

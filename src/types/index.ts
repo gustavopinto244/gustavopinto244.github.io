@@ -1,13 +1,5 @@
 export type AreaId = 'development' | 'security-infra' | 'automation-data';
 
-export type Area = {
-  id: AreaId;
-  label: string;
-  title: string;
-  icon: string;
-  description: string;
-};
-
 export type SkillCategory = 'languages' | 'techniques' | 'tools';
 
 export type Skill = {
@@ -21,14 +13,6 @@ export type Skill = {
   examples: string[];
 };
 
-export type SoftSkill = {
-  id: string;
-  name: string;
-  icon: string;
-  description: string;
-  context: string;
-};
-
 export type ProjectMedia = {
   type: 'image' | 'video';
   src: string;
@@ -36,10 +20,13 @@ export type ProjectMedia = {
   poster?: string;
 };
 
-export type ProjectStatus = 'Publicado' | 'Self-hosted' | 'Planejado';
+export type ProjectStatus = 'Publicado' | 'Self-hosted' | 'Planejado' | 'Em desenvolvimento';
 
 export type Project = {
+  id: string;
   name: string;
+  featured?: boolean;
+  supporting?: boolean;
   description: string;
   stack: string[];
   areas: AreaId[];
@@ -49,6 +36,12 @@ export type Project = {
   status: ProjectStatus;
   media?: ProjectMedia[];
   highlights?: string[];
+  caseStudy?: {
+    challenge: string;
+    decisions: string[];
+    limitation: string;
+    evidence: { label: string; href: string }[];
+  };
   note?: string;
 };
 
@@ -64,6 +57,7 @@ export type Experience = {
 export type Resume = {
   area: AreaId;
   file?: string;
+  englishFile?: string;
   updatedAt: string;
 };
 

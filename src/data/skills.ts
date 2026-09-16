@@ -264,4 +264,37 @@ export const skills: Skill[] = [
       'Conhecimento básico em segurança web, com autenticação, controle de acesso e configuração segura de serviços.',
     examples: ['Atlas Manager', 'API de Lista de Tarefas'],
   },
+  {
+    id: 'nestjs',
+    name: 'NestJS',
+    icon: 'Server',
+    category: 'languages',
+    areas: ['development', 'automation-data'],
+    usage: 'projects',
+    description:
+      'Aplicação de NestJS na organização dos módulos e das rotinas de coleta e avaliação de oportunidades.',
+    examples: ['ArgosCareer'],
+  },
+  {
+    id: 'sqlite',
+    name: 'SQLite & Drizzle',
+    icon: 'Database',
+    category: 'tools',
+    areas: ['development', 'automation-data'],
+    usage: 'projects',
+    description:
+      'Persistência de oportunidades e resultados de processamento com SQLite, Drizzle ORM e migrações de banco de dados.',
+    examples: ['ArgosCareer'],
+  },
+  {
+    id: 'llm-integration',
+    name: 'Integração com LLMs',
+    icon: 'Workflow',
+    category: 'techniques',
+    areas: ['automation-data'],
+    usage: 'projects',
+    description:
+      'Integração de modelos de linguagem para extrair requisitos e localizar evidências no perfil, com pontuação calculada no código e calibração ainda preliminar.',
+    examples: ['ArgosCareer'],
+  },
 ];

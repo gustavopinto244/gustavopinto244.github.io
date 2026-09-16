@@ -1,3 +1,4 @@
+import { useLanguage } from '../../i18n/context';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Play, X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 import clsx from 'clsx';
@@ -10,13 +11,16 @@ type MediaGalleryProps = {
 };
 
 export function MediaGallery({ media, label }: MediaGalleryProps) {
+  const { t } = useLanguage();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
+  const dialogRef = useRef<HTMLDialogElement | null>(null);
   const closeRef = useRef<HTMLButtonElement | null>(null);
 
   const isOpen = openIndex !== null;
 
   const close = useCallback(() => {
+    dialogRef.current?.close();
     setOpenIndex(null);
     triggerRef.current?.focus();
   }, []);
@@ -34,10 +38,28 @@ export function MediaGallery({ media, label }: MediaGalleryProps) {
   useEffect(() => {
     if (!isOpen) return;
 
+    dialogRef.current?.showModal();
     closeRef.current?.focus();
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') close();
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        close();
+      }
+      if (event.key === 'Tab') {
+        const controls = dialogRef.current?.querySelectorAll<HTMLElement>(
+          'button:not([disabled]), a[href], video[controls], [tabindex="0"]'
+        );
+        const first = controls?.[0];
+        const last = controls?.[controls.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last?.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first?.focus();
+        }
+      }
       if (event.key === 'ArrowRight' && media.length > 1) step(1);
       if (event.key === 'ArrowLeft' && media.length > 1) step(-1);
     };
@@ -64,7 +86,7 @@ export function MediaGallery({ media, label }: MediaGalleryProps) {
           ref={triggerRef}
           type="button"
           onClick={() => setOpenIndex(0)}
-          aria-label={`Ampliar mídia de ${label}`}
+          aria-label={`${t('Ampliar mídia de')} ${label}`}
           className="group/media relative block w-full aspect-video overflow-hidden bg-background"
         >
           {cover.type === 'video' && !cover.poster ? (
@@ -78,7 +100,7 @@ export function MediaGallery({ media, label }: MediaGalleryProps) {
           ) : (
             <img
               src={cover.type === 'video' ? cover.poster : cover.src}
-              alt={cover.caption ?? label}
+              alt={t(cover.caption ?? label)}
               loading="lazy"
               className="w-full h-full object-cover transition-transform duration-300 group-hover/media:scale-[1.02]"
             />
@@ -89,11 +111,13 @@ export function MediaGallery({ media, label }: MediaGalleryProps) {
           <span className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-md border border-border bg-background/85 px-2.5 py-1.5 text-[11px] text-text-muted backdrop-blur-sm transition-colors group-hover/media:border-primary/60 group-hover/media:text-primary">
             {cover.type === 'video' ? (
               <>
-                <Play className="w-3.5 h-3.5" /> assistir
+                <Play className="w-3.5 h-3.5" />
+                {t('assistir')}{' '}
               </>
             ) : (
               <>
-                <Maximize2 className="w-3.5 h-3.5" /> ampliar
+                <Maximize2 className="w-3.5 h-3.5" />
+                {t('ampliar')}{' '}
               </>
             )}
           </span>
@@ -111,8 +135,11 @@ export function MediaGallery({ media, label }: MediaGalleryProps) {
               <button
                 key={item.src}
                 type="button"
-                onClick={() => setOpenIndex(index)}
-                aria-label={`Abrir mídia ${index + 1} de ${label}`}
+                onClick={(event) => {
+                  triggerRef.current = event.currentTarget;
+                  setOpenIndex(index);
+                }}
+                aria-label={`${t('Abrir mídia')} ${index + 1} ${t('de')} ${label}`}
                 className="relative shrink-0 w-20 aspect-video overflow-hidden rounded-md border border-border transition-colors hover:border-primary/60"
               >
                 <img
@@ -133,12 +160,18 @@ export function MediaGallery({ media, label }: MediaGalleryProps) {
       </div>
 
       {isOpen && active && (
-        <div
-          role="dialog"
+        <dialog
+          ref={dialogRef}
           aria-modal="true"
-          aria-label={`Mídia - ${label}`}
-          onClick={close}
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center gap-4 bg-background/95 p-4 backdrop-blur-sm md:p-8"
+          aria-label={`${t('Mídia')} - ${label}`}
+          onCancel={(event) => {
+            event.preventDefault();
+            close();
+          }}
+          onClick={(event) => {
+            if (event.target === event.currentTarget) close();
+          }}
+          className="fixed inset-0 m-0 h-dvh max-h-none w-screen max-w-none z-[100] open:flex flex-col items-center justify-center gap-4 bg-background/95 p-4 backdrop-blur-sm md:p-8"
         >
           <div
             onClick={(event) => event.stopPropagation()}
@@ -148,12 +181,12 @@ export function MediaGallery({ media, label }: MediaGalleryProps) {
               <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
               <span className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
               <span className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
-              <span className="ml-2 truncate text-xs text-text-muted">{label}</span>
+              <span className="ml-2 truncate text-xs text-text-muted">{t(label)}</span>
               <button
                 ref={closeRef}
                 type="button"
                 onClick={close}
-                aria-label="Fechar"
+                aria-label={t('Fechar')}
                 className="ml-auto inline-flex items-center justify-center rounded-md border border-border p-1.5 text-text-muted transition-colors hover:border-primary/60 hover:text-primary"
               >
                 <X className="w-4 h-4" />
@@ -173,7 +206,7 @@ export function MediaGallery({ media, label }: MediaGalleryProps) {
               ) : (
                 <img
                   src={active.src}
-                  alt={active.caption ?? label}
+                  alt={t(active.caption ?? label)}
                   className="max-h-[70vh] w-full object-contain"
                 />
               )}
@@ -184,7 +217,7 @@ export function MediaGallery({ media, label }: MediaGalleryProps) {
                 {active.caption && (
                   <p className="text-xs text-text-muted">
                     <span className="text-accent">// </span>
-                    {active.caption}
+                    {t(active.caption)}
                   </p>
                 )}
 
@@ -193,7 +226,7 @@ export function MediaGallery({ media, label }: MediaGalleryProps) {
                     <button
                       type="button"
                       onClick={() => step(-1)}
-                      aria-label="Mídia anterior"
+                      aria-label={t('Mídia anterior')}
                       className="inline-flex items-center justify-center rounded-md border border-border p-1.5 text-text-muted transition-colors hover:border-primary/60 hover:text-primary"
                     >
                       <ChevronLeft className="w-4 h-4" />
@@ -204,7 +237,7 @@ export function MediaGallery({ media, label }: MediaGalleryProps) {
                     <button
                       type="button"
                       onClick={() => step(1)}
-                      aria-label="Próxima mídia"
+                      aria-label={t('Próxima mídia')}
                       className={clsx(
                         'inline-flex items-center justify-center rounded-md border border-border p-1.5',
                         'text-text-muted transition-colors hover:border-primary/60 hover:text-primary'
@@ -217,7 +250,7 @@ export function MediaGallery({ media, label }: MediaGalleryProps) {
               </div>
             )}
           </div>
-        </div>
+        </dialog>
       )}
     </>
   );

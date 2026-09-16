@@ -26,24 +26,23 @@ Organizo meus projetos e minhas competências em três frentes:
 | --------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
 | **Atlas**                   | Meu homelab: um mini PC de 8 GB que hospeda meus servidores, aplicações e APIs — onde tudo que construo entra no ar. | infraestrutura própria                                                                                               |
 | **Atlas Manager**           | Aplicação que administra o Atlas pelo navegador: métricas da máquina, controle de serviços, agendamentos e backups.  | [repositório](https://github.com/gustavopinto244/atlas-manager)                                                      |
+| **ArgosCareer**             | Coleta, organização e priorização de vagas com NestJS, SQLite e apoio de modelos de linguagem. Em desenvolvimento.   | [repositório](https://github.com/gustavopinto244/argos-career)                                                       |
 | **E-commerce Full-Stack**   | Catálogo com filtros, carrinho persistente e checkout com validação de preços no servidor.                           | [repositório](https://github.com/gustavopinto244/store-cart-project) · [site](https://store-cart-project.vercel.app) |
 | **API de Lista de Tarefas** | API REST em MVC com registro, login, autenticação e persistência em MongoDB.                                         | [repositório](https://github.com/gustavopinto244/task-list-project) · [site](https://task.gustavopinto.dev.br)       |
 | **Portfólio Pessoal**       | Este projeto.                                                                                                        | [repositório](https://github.com/gustavopinto244/gustavopinto244.github.io) · [site](https://gustavopinto.dev.br)    |
 
 ## Sobre este projeto
 
-Site de duas páginas — a home com projetos e competências, e `/about/` com trajetória e currículos.
+Site de duas páginas — a home apresenta projetos, competências e três currículos por área; `/about/` detalha a trajetória. Os projetos principais incluem decisões técnicas, limitações e links para evidências.
 
 **Stack:** React 19 · TypeScript · Vite 7 · Tailwind CSS 4 · lucide-react
 
 Algumas decisões que tomei aqui:
 
-- **Todo o conteúdo vive em `src/data/`**, tipado, separado dos componentes. Atualizar o portfólio é
-  editar um arquivo de dados, nunca mexer em JSX.
+- **Projetos, competências, currículos e perfil vivem em `src/data/`**, com tipos em `src/types/`. Textos de apresentação e agrupamentos visuais ficam nos componentes.
 - **Multi-página sem router.** Duas entradas HTML no build do Vite resolvem `/` e `/about/` com URLs
   reais, sem adicionar dependência nem depender de fallback de SPA no GitHub Pages.
-- **Uma taxonomia única de áreas** (`src/data/areas.ts`) alimenta as abas de projetos, os filtros de
-  competências e os currículos — uma fonte da verdade, três consumidores.
+- **Áreas tipadas** associam projetos e currículos a desenvolvimento, infraestrutura e automação. As competências exibem cinco itens por grupo inicialmente, com expansão para os demais.
 - **Sem dependências de UI.** Abas, filtros, grid de competências e o lightbox de mídia são
   componentes próprios, com papéis ARIA e navegação por teclado.
 - **Deploy automático** para GitHub Pages a cada push na `main`.
@@ -61,8 +60,8 @@ npm run build    # gera dist/ com as duas páginas
 ```
 src/
 ├── components/
-│   ├── ui/        # Button, Badge, Card, SectionHeader, AreaSelector, MediaGallery
-│   ├── sections/  # Hero, Projects, Skills, SoftSkills, About, Experience, Resumes
+│   ├── ui/        # Componentes compartilhados, como MediaGallery e EnglishHighlight
+│   ├── sections/  # Hero, Projects, Skills, About, Experience, Resumes
 │   └── layout/    # Navigation, Footer
 ├── data/          # todo o conteúdo do site
 ├── types/         # definições TypeScript

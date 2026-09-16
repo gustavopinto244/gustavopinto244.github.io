@@ -2,11 +2,11 @@ name: portfolio
 
 services:
   portfolio:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile
     image: portfolio:local
     container_name: portfolio
     restart: unless-stopped
     ports:
-      - "127.0.0.1:3001:80"
+      - '127.0.0.1:3001:80'

@@ -6,3 +6,6 @@ dist
 *.local
 observacoes.txt
 *.log
+
+# Contexto pessoal da busca de estágio (somente local).
+/.career/

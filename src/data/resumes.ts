@@ -7,6 +7,8 @@ import type { Resume } from '../types';
  * (starting at `/resumes/`, matching the filename on disk exactly) and bump
  * `updatedAt`. While `file` is missing the card renders as "em breve" instead
  * of a broken link.
+ * `file` is the Portuguese PDF; `englishFile` is the English PDF. Leave
+ * `englishFile` unset to show the English "Coming soon" placeholder.
  */
 export const resumes: Resume[] = [
   {
@@ -21,7 +23,7 @@ export const resumes: Resume[] = [
   },
   {
     area: 'automation-data',
-    // file: '/resumes/gustavo-pinto-automation-data.pdf',
-    updatedAt: '2026-08',
+    file: '/resumes/Gustavo_Data&Auto.pdf',
+    updatedAt: '2026-09',
   },
 ];

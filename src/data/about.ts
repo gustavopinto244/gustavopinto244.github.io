@@ -10,6 +10,8 @@ export const about: About = {
 
     'O Atlas foi o projeto que mais me ensinou, porque não terminou no deploy. Manter as coisas de pé exige entender o que está acontecendo na máquina, e por isso construí um painel próprio para monitorar saúde, controlar serviços, agendar rotinas e fazer backups sem abrir SSH para cada tarefa. Foi por esse caminho que a infraestrutura e a automação entraram nos meus planos junto com o desenvolvimento.',
 
+    'Também desenvolvo o ArgosCareer, que nasceu da minha própria busca por estágio. O projeto coleta e organiza oportunidades, usa modelos de linguagem para analisar requisitos e calcula a aderência ao perfil com regras no código. A calibração ainda está em andamento, e a ferramenta apoia minha triagem.',
+
     'Procuro um estágio onde eu possa contribuir com desenvolvimento, infraestrutura, dados ou automação enquanto evoluo tecnicamente.',
   ],
 

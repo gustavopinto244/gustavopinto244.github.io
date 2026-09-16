@@ -1,116 +1,76 @@
-import { Download, Clock } from 'lucide-react';
-import { areas, resumes } from '../../data';
-import { SectionHeader } from '../ui/SectionHeader';
-import { Badge } from '../ui/Badge';
-import { getIcon } from '../ui/icons';
+import { useLanguage } from '../../i18n/context';
+import { ArrowDownToLine, ArrowUpRight, Braces, Server, Workflow } from 'lucide-react';
+import { resumes } from '../../data';
+import type { AreaId } from '../../types';
 
-const months = [
-  'janeiro',
-  'fevereiro',
-  'março',
-  'abril',
-  'maio',
-  'junho',
-  'julho',
-  'agosto',
-  'setembro',
-  'outubro',
-  'novembro',
-  'dezembro',
-];
-
-const formatUpdatedAt = (value: string) => {
-  const [year, month] = value.split('-');
-  const label = months[Number(month) - 1];
-  return label ? `${label} de ${year}` : value;
-};
+const resumeContent = {
+  development: {
+    title: 'Desenvolvimento',
+    description: 'APIs, aplicações web e bancos de dados.',
+    icon: Braces,
+  },
+  'security-infra': {
+    title: 'Segurança e infraestrutura',
+    description: 'Linux, containers e administração de serviços.',
+    icon: Server,
+  },
+  'automation-data': {
+    title: 'Dados e automação',
+    description: 'Integrações, tratamento de dados e automação de rotinas.',
+    icon: Workflow,
+  },
+} satisfies Record<AreaId, { title: string; description: string; icon: typeof Braces }>;
 
 export function Resumes() {
-  const available = resumes.filter((resume) => resume.file).length;
-
+  const { t, language } = useLanguage();
   return (
-    <section id="resumes" className="pt-20">
-      <SectionHeader
-        command="ls ~/curriculos"
-        title="Currículos"
-        description="Uma versão para cada frente de atuação, com o foco ajustado à vaga. Baixe a que fizer sentido para o seu processo."
-        meta={
-          <p className="text-sm text-text-muted">
-            disponíveis: <span className="text-primary font-bold">{available}</span> de{' '}
-            {resumes.length}
-          </p>
-        }
-      />
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <section id="resumes" className="resume-section" aria-labelledby="resumes-heading">
+      <div className="resume-heading">
+        <div>
+          <p className="eyebrow">{t('PARA QUEM ESTÁ RECRUTANDO')}</p>
+          <h2 id="resumes-heading">{t('Um currículo para cada oportunidade.')}</h2>
+        </div>
+        <p>
+          {t(
+            'Formação, projetos e experiências reunidos em PDF, com o foco ajustado à área da vaga.'
+          )}{' '}
+        </p>
+      </div>
+      <div className="resume-grid">
         {resumes.map((resume) => {
-          const area = areas.find((item) => item.id === resume.area);
-          if (!area) return null;
-
-          const Icon = getIcon(area.icon);
-          const isAvailable = Boolean(resume.file);
-
-          const content = (
-            <>
-              <div className="flex items-start justify-between mb-4">
-                <span
-                  className={`flex items-center justify-center w-10 h-10 rounded-lg border bg-background transition-colors ${
-                    isAvailable
-                      ? 'border-border text-primary group-hover:border-primary/50'
-                      : 'border-border text-text-muted/50'
-                  }`}
-                >
-                  {Icon && <Icon className="w-4 h-4" strokeWidth={1.75} />}
-                </span>
-
-                {isAvailable ? <Badge variant="primary">pdf</Badge> : <Badge>em breve</Badge>}
+          const file = language === 'en' ? resume.englishFile : resume.file;
+          const { title, description, icon: Icon } = resumeContent[resume.area];
+          return (
+            <article className="resume-card" key={resume.area}>
+              <div className="resume-card-top">
+                <Icon size={24} />
+                <span>{language === 'en' ? 'EN · PDF' : 'PT-BR · PDF'}</span>
               </div>
-
-              <h3
-                className={`font-display text-lg font-bold mb-2 transition-colors ${
-                  isAvailable ? 'group-hover:text-primary' : 'text-text-muted'
-                }`}
-              >
-                {area.title}
-              </h3>
-
-              <p className="text-xs text-text-muted leading-relaxed mb-5">{area.description}</p>
-
-              <p className="mt-auto flex items-center gap-2 text-[11px] text-text-muted/80">
-                {isAvailable ? (
-                  <>
-                    <Download className="w-3.5 h-3.5 text-primary" />
-                    baixar · atualizado em {formatUpdatedAt(resume.updatedAt)}
-                  </>
-                ) : (
-                  <>
-                    <Clock className="w-3.5 h-3.5" />
-                    em preparação
-                  </>
-                )}
-              </p>
-            </>
-          );
-
-          const baseClass =
-            'group flex flex-col rounded-xl border bg-surface p-5 transition-colors duration-200';
-
-          return isAvailable ? (
-            <a
-              key={resume.area}
-              href={resume.file}
-              download
-              className={`${baseClass} border-border hover:border-primary/50 hover:shadow-[0_0_30px_-14px_var(--color-primary)]`}
-            >
-              {content}
-            </a>
-          ) : (
-            <div
-              key={resume.area}
-              className={`${baseClass} border-border border-dashed opacity-80`}
-            >
-              {content}
-            </div>
+              <h3>{t(title)}</h3>
+              <p>{t(description)}</p>
+              {file ? (
+                <div className="resume-card-actions">
+                  <a href={file} target="_blank" rel="noreferrer">
+                    {t('Visualizar')} <ArrowUpRight size={16} />
+                    <span className="sr-only">
+                      {t('currículo de')} {t(title)}
+                    </span>
+                  </a>
+                  <a href={file} download={`gustavo-pinto-${resume.area}-${language}.pdf`}>
+                    <ArrowDownToLine size={16} />
+                    {t('Baixar')}{' '}
+                    <span className="sr-only">
+                      {t('currículo de')} {t(title)}
+                    </span>
+                  </a>
+                </div>
+              ) : (
+                <div className="resume-placeholder">
+                  <strong>{t('Em breve')}</strong>
+                  <p>{t('A versão em inglês deste currículo estará disponível em breve.')}</p>
+                </div>
+              )}
+            </article>
           );
         })}
       </div>
